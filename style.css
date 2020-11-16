@@ -2,6 +2,12 @@ body,p,i,div,header,h3 {
     font-family:Balsamiq Sans, Raleway, Monospace;
 }
 
+
+            #load {
+                top:800px;
+                left:150px;
+            }
+
 .fa {
     color: #fff;
     font-size: 50px;
