@@ -22,6 +22,7 @@ load = document.querySelector("#load")
               e.preventDefault()
               overlay.style.display = "block"
               load.style.display = "block"
+              signup()
           })
           
           
@@ -47,4 +48,43 @@ var signPassword =  document.getElementById("signPassword").value
                 signbtn1.disabled = true
               }
           }, 100)
+}
+
+function signup() {
+var signEmail =  document.getElementById("signEmail").value
+var signPassword =  document.getElementById("signPassword").value
+    firebase.auth().createUserWithEmailAndPassword(signEmail, signPassword).then(() => {
+            swal({
+              title: "Done",
+              text: "Account Successfully Created",
+              icon: "success",
+              timer: 2000
+              });
+              overlay.style.display = "none"
+              load.style.display = "none"
+              window.location.href = "login.html";
+        }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          swal({
+              title: "An Error Occured",
+              text: "The password is too weak",
+              icon: "error"
+              });
+        } else {
+          swal({
+              title:"An Error Occured",
+              text:errorMessage,
+              icon:"error"
+              
+          });
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+              overlay.style.display = "none"
+              load.style.display = "none"
+      });
 }
