@@ -57,6 +57,11 @@
             #load, #overlay {
                 display: block;
             }
+
+            #load {
+                top:800px;
+                left:150px;
+            }
             
             #catImg {
                 height: 200px;
@@ -72,6 +77,13 @@
                 .catImg {
                     height: 100px;
                 }
+
+            #load {
+                top:300px;
+                left:0;
+            }
+
+
             }
         </style>
     </head>
@@ -85,7 +97,7 @@
       
         <div class="w3-overlay w3-animate-opacity"  style="cursor:pointer; z-index:5;" id="overlay"></div>
         
-        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed; top:300px;left:0px;" id="load">
+        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
                     <span class="spinner-grow spin text-white">
                     </span><br><br>
                 LaunMart <i class="fa fa-shopping-cart"></i>
