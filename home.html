@@ -69,7 +69,7 @@
                 img {
                     height:250px;
                 }
-                #catImg {
+                .catImg {
                     height: 100px;
                 }
             }
@@ -158,6 +158,14 @@
                 
             </div>
             <br><br>
+            
+            <h4 style="font-family:Balsamiq Sans;">Kitchen</h4>
+            <br>
+            
+            <div class='row cat' id='kitchenSection'>
+                
+            </div>
+            <br><br>
 
         </div>
         
@@ -194,7 +202,7 @@
           elect = ""
           
           elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
-              elect += "<img id='catImg' src='" + img + " '";
+              elect += "<img class='catImg' src='" + img + " '";
               elect += "<br>"
               elect += item
               elect += "<br>"
@@ -202,6 +210,21 @@
           
           elect += "</div>"
           document.getElementById("electSection").innerHTML += elect
+      }
+      
+      if (categ == "Kitchen") {
+          
+          elect = ""
+          
+          elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
+              elect += "<img class='catImg' src='" + img + " '";
+              elect += "<br>"
+              elect += item
+              elect += "<br>"
+              elect += price
+          
+          elect += "</div>"
+          document.getElementById("kitchenSection").innerHTML += elect
       }
   })
   
@@ -211,7 +234,7 @@
   
   
   
-/*  function go() {
+ /* function go() {
       item = document.getElementById("item").value
       price = document.getElementById("price").value
       cat = document.getElementById("cat").value
