@@ -15,7 +15,7 @@ load = document.querySelector("#load")
           
           signbtn2.addEventListener("click", (e) => {
               e.preventDefault()
-              window.location.replace("login.html");
+              window.location.href = "login.html";
           }) 
           
           signbtn1.addEventListener("click", (e) => {
