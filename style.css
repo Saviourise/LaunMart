@@ -1,0 +1,26 @@
+body,p,i,div,header,h3 {
+    font-family:Balsamiq Sans, Raleway, Monospace;
+}
+
+.fa {
+    color: #fff;
+    font-size: 50px;
+
+}
+#loader {
+    display: inline;
+    position: absolute;
+    /*visibility: hidden;*/
+}
+
+#login {
+    display: none;
+}
+
+button {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
