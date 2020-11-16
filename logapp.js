@@ -22,7 +22,7 @@ load = document.querySelector("#load")
           
           btn2.addEventListener("click", (e) => {
               e.preventDefault()
-              window.location.replace("signup.html");
+              window.location.href = "signup.html";
           }) 
           
           btn1.addEventListener("click", (e) => {
