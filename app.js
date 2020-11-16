@@ -15,7 +15,7 @@ window.onload = () => {
             
            /* var btn = document.querySelector("button")
             btn.style.display = "block"*/
-            window.location.href ="login.html";
+            window.location.replace("login.html");
     },12000)
     
     
