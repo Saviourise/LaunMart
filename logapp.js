@@ -15,6 +15,7 @@ load = document.querySelector("#load")
               e.preventDefault()
               overlay.style.display = "block"
               load.style.display = "block"
+              home()
           }) 
           
           
@@ -35,6 +36,14 @@ load = document.querySelector("#load")
           logTimer()
 }
 
+function home() {
+    setTimeout(() => {
+        
+              window.location.href = "home.html";
+              overlay.style.display = "block"
+              load.style.display = "block"
+    }, 3000);
+}
 
 function logTimer() {
     
