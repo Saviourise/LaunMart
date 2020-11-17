@@ -21,6 +21,7 @@ load = document.querySelector("#load")
           
           
           
+          
           btn2.addEventListener("click", (e) => {
               e.preventDefault()
               window.location.href = "signup.html";
@@ -30,6 +31,7 @@ load = document.querySelector("#load")
               e.preventDefault()
               overlay.style.display = "block"
               load.style.display = "block"
+              login()
           })
           
           btn1.disabled = true
@@ -62,4 +64,32 @@ var logPassword =  document.getElementById("logPassword").value
               
               
           }, 100)
+}
+
+function login() {
+    
+var logEmail =  document.getElementById("logEmail").value
+var logPassword =  document.getElementById("logPassword").value
+    firebase.auth().signInWithEmailAndPassword(logEmail, logPassword).then(() => {
+           /* swal({
+                text:"successfully",
+                timer: 2000
+            })*/
+        window.location.href = "loghome.html";
+              overlay.style.display = "none"
+              load.style.display = "none"
+        }).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  
+  swal({
+      title: "An Error Occurred",
+      text: errorMessage,
+      icon: "error"
+  })
+  // ...
+              overlay.style.display = "none"
+              load.style.display = "none"
+});
 }
