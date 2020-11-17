@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>LaunMart || Online Shopping</title>
+        <meta charset="utf-8">
+        
+       <!-- <link type="text/css" href="style.css" rel="stylesheet">
+        -->
+        <script type="text/javascript" src="homeapp.js"></script>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+ 
+        
+        
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        
+        <style>
+            img {
+                width: 100%;
+                height:500px;
+            }
+            .cat {
+                height:640px;
+                overflow: hidden;
+                
+            }
+            
+            #load, #overlay {
+                display: block;
+            }
+            
+            #load {
+                top:800px;
+                left:150px;
+            }
+            
+            .catImg {
+                height: 200px;
+            }
+            
+            li{
+                list-style-type: none;
+                font-size: 20px;
+            }
+            
+            #ta {
+                display: none;
+            }
+            
+            @media(max-width: 768px){
+                .cat {
+                    height: 320px;
+                }
+                img {
+                    height:250px;
+                }
+                .catImg {
+                    height: 100px;
+                }
+            
+            #load {
+                top:300px;
+                left:0px;
+            }
+            }
+        </style>
+    </head>
+    
+    
+    
+    
+    
+    <body class="bg-white" style="font-family:Balsamiq Sans;" id="body">
+        
+      
+        <div class="w3-overlay w3-animate-opacity"  style="cursor:pointer; z-index:5;" id="overlay"></div>
+        
+        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
+                    <span class="spinner-grow spin text-white">
+                    </span><br><br>
+                LaunMart <i class="fa fa-shopping-cart"></i>
+                </div>
+        
+        
+        
+        <div id="home">
+            
+           <!-- <header class="jumbotron bg-primary text-white">
+               <h3 style="font-family:Balsamiq Sans; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
+               </h3>
+               <p>Welcome Guest <span class="w3-right">Login</span></p>
+            </header>-->
+            
+            
+            
+<nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top" style="z-index:4;">
+  <!-- Brand -->
+  <h3 class="navbar-brand" style="font-family:Balsamiq Sans;">LaunMart <i class="fa fa-shopping-cart"></i></h3>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon" style="outline:none;"></span>
+  </button>
+
+  <!-- Navbar links -->
+  
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <hr>
+    <ul class="navbar-nav">
+        <li class="nav-item row">
+            <i class="fa fa-search col-2"></i>
+        <input type="search" class="form-control col-8" placeholder="Search Products"><button class="btn btn-success"><i class="fa fa-search col-2"></i></button>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="acc.html"> <i style="color:black;" class="fa fa-user"> </i> Account </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i style="color:black;" class="fa fa-shopping-cart"> </i> Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
+        <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
+        <a class="dropdown-item" href="#electSection">Electronics</a>
+        <a class="dropdown-item" href="#kitchenSection">Kitchen</a>
+        <a class="dropdown-item" href="#">Fashion</a>
+      </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signup.html"><i style="color:black;" class="fa fa-sign-out-alt"> </i> Sign Out</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"> <i style="color:black;" class="fa fa-users"> </i> About Us </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"> <i style="color:black;" class="fa fa-question-circle"> </i> FAQ </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+               <br><br>
+               
+           
+        
+        
+        <div class="container-fluid w3-center" style="z-index:3;">
+            <h3 style="font-family:Balsamiq Sans;">Flash Sales for you</h3>
+            <br>
+            
+            
+            <div id="demo" style="z-index:1;" class="carousel slide" data-ride="carousel" data-interval="2000">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class="carousel-caption">
+    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Great Deals just for you</h4>
+  </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTywlfKWkurnonJ8JMjeywSczsyzSXOqTYCqw&usqp=CAU" class="w3-opacity" alt="Great deals">
+      
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQSnzbuvtiXiTWL9aEOx1S_aefoaV-u9zQdIw&usqp=CAU" class="w3-opacity" alt="Exclusive offers">
+      <div class="carousel-caption">
+    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Exclusive Offers coming your way</h4>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR8vEk0tkIMuqols2_03poB09z4CyAqa5Pm1Q&usqp=CAU" class="w3-opacity" alt="Cheap prices">
+      <div class="carousel-caption">
+    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Cheap and Affordable prices</h4>
+  </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span style="z-index:3;" class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div><br>
+<h3 style="font-family:Balsamiq Sans;">Categories</h3>
+            <br>
+            <h4 id="topCat" style="font-family:Balsamiq Sans;">Electronics</h4>
+            <br>
+            
+            <div class='row cat' id='electSection'>
+                
+            </div>
+            <br><br>
+            
+            <h4 style="font-family:Balsamiq Sans;">Kitchen</h4>
+            <br>
+            
+            <div class='row cat' id='kitchenSection'>
+                
+            </div>
+            <br><br>
+<div id="ta">
+    An error occurred<br>
+    <button id="tabtn">Try again</button>
+</div>
+        </div>
+        
+   <!-- <input id="item" placeholder="item">
+    <input id="price" placeholder="price">
+    <input id="pic" placeholder="pic">
+    <input id="cat" placeholder="cat">
+    <button onclick="go()">Enter</button>-->
+
+<script>
+/*window.onload = () => {
+    document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+}*/
+  // Your web app's Firebase configuration
+  try {
+  var firebaseConfig = {
+    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+    authDomain: "launmart-14731.firebaseapp.com",
+    databaseURL: "https://launmart-14731.firebaseio.com",
+    projectId: "launmart-14731",
+    storageBucket: "launmart-14731.appspot.com",
+    messagingSenderId: "951616527792",
+    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+  };
+  }
+  catch (error){
+      document.getElementById("body").style = "none"
+      document.getElementById("ta").style = "block"
+  
+  }
+  // Initialize Firebase
+  try {
+  firebase.initializeApp(firebaseConfig);
+  }
+  catch (error){
+      document.getElementById("body").style = "none"
+      document.getElementById("ta").style = "block"
+  
+  }
+  tabtn = document.getElementById("tabtn")
+  tabtn.addEventListener("click", () => {
+      window.location.href = "home.html"
+  })
+  try {
+  firebase.database().ref("Items").on("child_added", function(snapshot){
+      item = snapshot.val().item
+      price = snapshot.val().price
+      categ = snapshot.val().cat
+      img = snapshot.val().pic
+      console.log(item+price+categ+img)
+      document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      if (categ == "Electronics") {
+          document.getElementById("topCat"). innerText = "Electronics"
+          elect = ""
+          
+          elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
+              elect += "<img class='catImg' src='" + img + " '";
+              elect += "<br>"
+              elect += item
+              elect += "<br>"
+              elect += price
+          
+          elect += "</div>"
+          document.getElementById("electSection").innerHTML += elect
+      }
+      
+      if (categ == "Kitchen") {
+          
+          elect = ""
+          
+          elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
+              elect += "<img class='catImg' src='" + img + " '";
+              elect += "<br>"
+              elect += item
+              elect += "<br>"
+              elect += price
+          
+          elect += "</div>"
+          document.getElementById("kitchenSection").innerHTML += elect
+      }
+  })
+  }
+  catch (err){
+      document.getElementById("body").style = "none"
+      document.getElementById("ta").style = "block"
+  
+  }
+  
+  
+  
+  
+  
+  
+ /* function go() {
+      item = document.getElementById("item").value
+      price = document.getElementById("price").value
+      cat = document.getElementById("cat").value
+      pic = document.getElementById("pic").value
+      firebase.database().ref("Items").push().set({
+          item: item,
+          price: price,
+          cat: cat,
+          pic: pic
+      }).then(() => {
+          console.log("sent")
+      }).catch(() => {
+          console.log("error")
+      })
+  }*/
+</script>
+        
+    </body>
+
+</html>
+ 
