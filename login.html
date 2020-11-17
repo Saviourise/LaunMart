@@ -30,7 +30,7 @@
      <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
         
@@ -50,14 +50,15 @@
                 top:800px;
                 left:150px;
             }
-@media(max-width: 708px) {
+            @media(max-width: 768px) {
 
             #load {
                 top:300px;
                 left:0;
             }
 }
-       </style>
+        </style>
+        
     </head>
     
     
@@ -91,38 +92,73 @@
                 
                    
                         
-                        <div class="row">
-                    <i class="w3-right col-2 far fa-envelope" style="font-size:35px;"></i><input type="email" id="logEmail" placeholder="Email" class="form-control col-9">
+                        <div class="row">    
+                        <div class="col-1 col-md-3"></div>
+                        <div class="col-10 col-md-6 input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+    </div>
+    <input type="email" class="form-control" id="logEmail" placeholder="Email">
+  </div>
+  <div class="col-1 col-md-3"></div>
                      </div>
                      <br>
-                
-                        <div class="row">
-                    <i class="w3-right col-2 fa fa-lock" style="font-size:30px;"></i><input type="password" placeholder="Password" id="logPassword" class="form-control col-9">
+                <div class="row">    
+                        <div class="col-1 col-md-3"></div>
+                        <div class="col-10 col-md-6 input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-lock"></i></span>
+    </div>
+    <input type="password" class="form-control" id="logPassword" placeholder="Password">
+  </div>
+  <div class="col-1 col-md-3"></div>
                      </div>
+                        
                 <br>
-                <div class="row container-fluid">
-                    <button id="btn1" class="btn btn-success col-4">Log In <i class="fa fa-sign-in-alt"></i></button>
-                    <span class="col-4">
-                     
-                    </span>
-                    <button id="btn2" class="btn btn-warning col-4">
-                        Sign Up <i class="fa fa-plus"></i>
+                <div class="row  w3-center">    
+                        <div class="col-1 col-md-3">
+                            
+                        </div>
+                        <div class="col-10 w3-center row col-md-6 mb-3">
+                            
+                    <button id="btn1" class="btn btn-success col-5">Log In <i class="fa fa-sign-in-alt"></i></button>
+                    <span class="col-2"></span>
+                    
+      <button style="font-size:12px;" id="btn2" class="btn btn-warning col-5">
+                       Sign Up <i class="fa fa-plus"></i>
                     </button>
-                </div>
+  </div>
+  <div class="col-1 col-md-3">
+  </div>
+                     </div>
+                
                 <br>
+                
                 <div class="container row">
-                <button id="btn3" class="btn btn-success col-12">
+                    <div class="col-1"></div>
+                <button id="btn3" class="btn btn-success col-10">
                     Log In as Guest <i class="fa fa-user"></i>
                 </button>
+                <div class="col-1"></div>
                 </div>
             </form>
             
         </div>
         
-        
-        <script>
-          
+         <script>
+          var firebaseConfig = {
+    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+    authDomain: "launmart-14731.firebaseapp.com",
+    databaseURL: "https://launmart-14731.firebaseio.com",
+    projectId: "launmart-14731",
+    storageBucket: "launmart-14731.appspot.com",
+    messagingSenderId: "951616527792",
+    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+  };
+  firebase.initializeApp(firebaseConfig);
+  
         </script>
+       
         
     </body>
 
