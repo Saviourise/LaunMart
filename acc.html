@@ -79,43 +79,12 @@
         
 <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-top" style="z-index:4;">
   <!-- Brand -->
-  <h3 class="navbar-brand" style="font-family:Balsamiq Sans;">Display Name <i class="fa fa-user"></i></h3>
+  <h3 class="navbar-brand" style="font-family:Balsamiq Sans;">LaunMart Upload Product <i class="fa fa-plus"></i></h3>
   </nav>
   <br>
-  <div class="container">
-      <div style="font-family:Balsamiq Sans;" class="w3-center">
-          <button data-toggle="collapse" data-target="#accform" class="btn btn-primary">Edit Profile</button>
-          <br>
-          <form class="container collapse form-group" id="accform">
-              <br>
-              <div class="container w3-container">
-                  <div class="container">
-              <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-user"></i></span>
-    </div>
-    <input type="text" class="form-control" id="userName" placeholder="Username">
-  </div>
-</div>
-              </div>
               
               
-              
-              <div class="container w3-container">
-                  <div class="container">
-              <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text">@</span>
-    </div>
-    <input type="url" class="form-control" id="imgUrl" placeholder="Image Url">
-  </div>
-</div>
-              </div>
-          </form>
-          
-          
-          
-      </div>
+            
       
       
       <br><br>
@@ -136,6 +105,16 @@
               </div>
               
               
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-building"></i></span>
+    </div>
+    <input type="text" class="form-control" id="proSeller" placeholder="Company Name">
+  </div>
+</div>
+              </div>
               
               <div class="container w3-container">
                   <div class="container">
@@ -178,7 +157,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fa fa-money-bill-wave"></i></span>
     </div>
-    <input type="Number" class="form-control" id="proNomPrice" placeholder="Product Normal Price">
+    <input type="Number" class="form-control" id="proPrice" placeholder="Product Price">
   </div>
 </div>
               </div>
@@ -187,11 +166,33 @@
                   <div class="container">
               <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-money-bill-wave"></i></span>
+      <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
     </div>
-    <input type="Number" class="form-control" id="proSellPrice" placeholder="Product Selling Price">
+    <input type="Number" class="form-control" id="number" placeholder="WhatsApp contact">
+  </div>
+</div>       
+</div>
+
+<div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-car"></i></span>
+    </div>
+    <input type="text" class="form-control" id="location" placeholder="Address">
+  </div>
   </div>
 </div>
+        <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">@</span>
+    </div>
+    <input type="email" class="form-control" id="email" placeholder="Email Contact">
+  </div>
+</div>
+
               </div>
               
               <div class="container w3-container">
@@ -264,11 +265,15 @@
           var proName = document.getElementById("proName").value
           var proImgUrl = document.getElementById("proImgUrl").value
           var proCat = document.getElementById("proCat").value
-          var proNomPrice = document.getElementById("proNomPrice").value
-          var proSellPrice = document.getElementById("proSellPrice").value
+          var proPrice = document.getElementById("proPrice").value
+          var proEmail = document.getElementById("email").value
+          var proSeller = document.getElementById("proSeller").value
+          var proSellerLoc = document.getElementById("location").value
+          
+          var proNum = document.getElementById("number").value
           var proDes = document.getElementById("proDes").value
           
-          if(proName!="" && proImgUrl!="" && proCat!="" && proNomPrice!="" && proSellPrice!="" && proDes!="") {
+          if(proName!="" && proImgUrl!="" && proCat!="" && proPrice!="" && proEmail!="" && proNum!="" && proSellerLoc!="" && proSeller!="" && proDes!="") {
               proBtn.disabled = false
           }
           else {
@@ -284,15 +289,22 @@
           var proName = document.getElementById("proName").value
           var proImgUrl = document.getElementById("proImgUrl").value
           var proCat = document.getElementById("proCat").value
-          var proNomPrice = document.getElementById("proNomPrice").value
-          var proSellPrice = document.getElementById("proSellPrice").value
+          var proPrice = document.getElementById("proPrice").value
+          var proSeller = document.getElementById("proSeller").value
+          var proEmail = document.getElementById("email").value
+          var proSellerLoc = document.getElementById("location").value
+          
+          var proNum = document.getElementById("number").value
           var proDes = document.getElementById("proDes").value
           db.collection("products").add({
               proName: proName,
               proImgUrl: proImgUrl,
               proCat: proCat,
-              proNomPrice: proNomPrice,
-              proSellPrice: proSellPrice,
+              proPrice: proPrice,
+              proEmail: proEmail,
+              proNum: proNum,
+              proSellerLoc: proSellerLoc,
+              proSeller: proSeller,
               proDes: proDes
           }).then(() => {
               swal({
@@ -302,8 +314,12 @@
           document.getElementById("proName").value = ""
           document.getElementById("proImgUrl").value = ""
           document.getElementById("proCat").value = ""
-          document.getElementById("proNomPrice").value = ""
-          document.getElementById("proSellPrice").value = ""
+          var proPrice = document.getElementById("proPrice").value = ""
+          var proEmail = document.getElementById("email").value = ""
+          var proSellerLoc = document.getElementById("location").value = ""
+          
+          var proSeller = document.getElementById("proSeller").value = ""
+          var proNum = document.getElementById("number").value = ""
           document.getElementById("proDes").value = ""
           overlay.style.display = "none"
           load.style.display = "none"
