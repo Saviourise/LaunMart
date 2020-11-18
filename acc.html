@@ -24,14 +24,16 @@
         <!-- Popper JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         
-  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
  
         
         
      <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
         
@@ -65,11 +67,11 @@
         </style>
         
         </head>
-        <body>
+        <body style="font-family:Balsamiq Sans;">
         
         <div class="w3-overlay w3-animate-opacity"  style="cursor:pointer; z-index:5;" id="overlay"></div>
         
-        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
+        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed; font-family:Balsamiq Sans;" id="load">
                     <span class="spinner-grow spin text-white">
                     </span><br><br>
                 LaunMart <i class="fa fa-shopping-cart"></i>
@@ -110,9 +112,246 @@
 </div>
               </div>
           </form>
+          
+          
+          
       </div>
       
+      
+      <br><br>
+      <div style="font-family:Balsamiq Sans;" class="w3-center">
+          <button data-toggle="collapse" data-target="#proform" class="btn btn-primary">Upload Product</button>
+          <br>
+          <form class="container collapse form-group" id="proform">
+              <br>
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-gift"></i></span>
+    </div>
+    <input type="text" class="form-control" id="proName" placeholder="Product Name">
   </div>
+</div>
+              </div>
+              
+              
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">@</span>
+    </div>
+    <input type="url" class="form-control" id="proImgUrl" placeholder="Product Image Url">
+  </div>
+</div>
+              </div>
+              
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-plus"></i></span>
+    </div>
+    
+    <input type="text" class="form-control" id="proCat" placeholder="Select Product Category" disabled>
+    
+<div class="dropdown dropleft input-group-append">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+   <!-- <span class="fa fa-caret-down"></span>-->
+  </button>
+  <div class="dropdown-menu">
+    <span class="dropdown-item" onclick="proCatElect()">Electronics</span>
+    <span class="dropdown-item" onclick="proCatKit()">Kitchen</span>
+    <span class="dropdown-item" onclick="proCatFas()">Fashion</span>
+  </div>
+</div>
+  </div>
+</div>
+              </div>
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-money-bill-wave"></i></span>
+    </div>
+    <input type="Number" class="form-control" id="proNomPrice" placeholder="Product Normal Price">
+  </div>
+</div>
+              </div>
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-money-bill-wave"></i></span>
+    </div>
+    <input type="Number" class="form-control" id="proSellPrice" placeholder="Product Selling Price">
+  </div>
+</div>
+              </div>
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-hand-point-right"></i></span>
+    </div>
+    <textarea rows="4" class="form-control" id="proDes" placeholder="Product Description"></textarea>
+  </div>
+</div>
+              </div>
+              
+              
+              <div class="container w3-center w3-container">
+                  <div class="w3-center container">
+              <div class="input-group w3-center mb-3">
+    <button class="btn btn-primary w3-center" onclick="Upload()" id="upLoad" disabled>Upload</button>
+  </div>
+</div>
+              </div>
+          </form>
+          
+          
+          
+      </div>
+      
+      
+      
+      <!--<div id="products"></div>-->
+      
+      
+  </div>
+  
+  
+  <script>
+  
+  
+          var firebaseConfig = {
+    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+    authDomain: "launmart-14731.firebaseapp.com",
+    databaseURL: "https://launmart-14731.firebaseio.com",
+    projectId: "launmart-14731",
+    storageBucket: "launmart-14731.appspot.com",
+    messagingSenderId: "951616527792",
+    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore()
+  db.settings({timeStampsInSnapshot:true});
+      function proCatElect() {
+          document.getElementById("proCat").value = "Electronics"
+      }
+      
+      function proCatKit() {
+          document.getElementById("proCat").value = "Kitchen"
+      }
+      
+      function proCatFas() {
+          document.getElementById("proCat").value = "Fashion"
+      }
+      document.getElementById("upLoad").addEventListener("click", (e) => {
+          
+          e.preventDefault()
+      })
+      
+      setInterval(() => {
+          var proBtn = 
+      document.getElementById("upLoad")
+          var proName = document.getElementById("proName").value
+          var proImgUrl = document.getElementById("proImgUrl").value
+          var proCat = document.getElementById("proCat").value
+          var proNomPrice = document.getElementById("proNomPrice").value
+          var proSellPrice = document.getElementById("proSellPrice").value
+          var proDes = document.getElementById("proDes").value
+          
+          if(proName!="" && proImgUrl!="" && proCat!="" && proNomPrice!="" && proSellPrice!="" && proDes!="") {
+              proBtn.disabled = false
+          }
+          else {
+              proBtn.disabled = true
+          }
+      }, 100)
+      
+      function Upload() {
+          var overlay = document.getElementById("overlay")
+          var load = document.getElementById("load")
+          overlay.style.display = "block"
+          load.style.display = "block"
+          var proName = document.getElementById("proName").value
+          var proImgUrl = document.getElementById("proImgUrl").value
+          var proCat = document.getElementById("proCat").value
+          var proNomPrice = document.getElementById("proNomPrice").value
+          var proSellPrice = document.getElementById("proSellPrice").value
+          var proDes = document.getElementById("proDes").value
+          db.collection("products").add({
+              proName: proName,
+              proImgUrl: proImgUrl,
+              proCat: proCat,
+              proNomPrice: proNomPrice,
+              proSellPrice: proSellPrice,
+              proDes: proDes
+          }).then(() => {
+              swal({
+                  text:"Product added successfully",
+                  icon: "success"
+              })
+          document.getElementById("proName").value = ""
+          document.getElementById("proImgUrl").value = ""
+          document.getElementById("proCat").value = ""
+          document.getElementById("proNomPrice").value = ""
+          document.getElementById("proSellPrice").value = ""
+          document.getElementById("proDes").value = ""
+          overlay.style.display = "none"
+          load.style.display = "none"
+          }).catch((error) => {
+              swal({
+              text: "An Error Occurred while uploading the product. please try again",
+              icon:"error"
+              })
+              
+          overlay.style.display = "none"
+          load.style.display = "none"
+          })
+          console.log(proName+proImgUrl+proCat+proNomPrice+proSellPrice+proDes)
+      }
+  
+  
+  
+/*  db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          console.log(doc.data())
+          renderDoc(doc)
+      })
+  })
+  
+  
+  function renderDoc(doc) {
+      var Products = document.querySelector("#products");
+      
+      pro = ""
+      pro += "<div onclick='tap(this);' data-id='" + doc.id + "'>"
+      pro += "<p>"
+      pro += doc.data().proName
+      pro += "</p>"
+      pro += ": " + doc.data().proSellPrice
+      pro += "</div>"
+      Products.innerHTML += pro
+      
+      
+  }
+  
+  function tap(self) {
+      let id = self.getAttribute('data-id');
+      console.log(id)
+      db.doc("products/" + id).get().then((doc) => {
+          console.log(doc.data().proCat)
+      })
+  }*/
+  </script>
         
         </body>
         
