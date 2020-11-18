@@ -16,7 +16,7 @@ window.onload = () => {
            /* var btn = document.querySelector("button")
             btn.style.display = "block"*/
             window.location.replace("login.html");
-    },12000)
+    },3000)
     
     
    /* btn.addEventListener("click", (e) => {
