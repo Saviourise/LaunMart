@@ -157,11 +157,15 @@
               </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="home.html"><i style="color:black;" class="fa fa-building"> </i> Home</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
         <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
-        <a class="dropdown-item" href="#electSection">Electronics</a>
-        <a class="dropdown-item" href="#kitchenSection">Kitchen</a>
-        <a class="dropdown-item" href="#">Fashion</a>
+        <a class="dropdown-item" onclick="catElect()">Electronics</a>
+        <a class="dropdown-item" onclick="catKitchen()">Kitchen</a>
+        <a class="dropdown-item" onclick="catFas()">Fashion</a>
+        <a class="dropdown-item" onclick="catOther()">Other</a>
       </div>
       </li>
       <li class="nav-item">
@@ -209,7 +213,8 @@
                    Seller Location:
                </div><hr>
                <div class="container">
-                   <button class="btn btn-primary" onclick="goBack()">Go Back</button><br>
+                    <button class="btn btn-primary" onclick="goBack()" id="goBack">Go Back</button>
+                   <button class="btn btn-primary" onclick="goBack2()" id="goBack2">Go Back</button><br>
                </div><br>
            </div>
         
@@ -217,14 +222,20 @@
             <h4 id="tops" style="font-family:Balsamiq Sans;" class="container w3-center">Result for </h4>
             <br>
             
-            <div class='row cat w3-center' id='sp'>
+            <div class='row w3-center' id='sp'>
                 
             </div>
             <div class="container">
                 <button class="btn btn-primary" onclick="goBack()">Back</button>
             </div>
             </div>
-        
+            
+            <div id="catPage" class="container w3-center">
+                <h4 style="font-family:Balsamiq Sans;"id="catPageName"></h4>
+                <br>
+                <div id="catPageContent" class="container row"></div>
+            </div>
+            
         <div class="container-fluid w3-center" style="z-index:3;" id="homePage">
             <h3 style="font-family:Balsamiq Sans;">Flash Sales for you</h3>
             <br>
@@ -288,6 +299,20 @@
                 
             </div>
             <br><br>
+            <h4 style="font-family:Balsamiq Sans;">Fashion</h4>
+            <br>
+            
+            <div class='row cat' id='FashionSection'>
+                
+            </div>
+            <br><br>
+            <h4 style="font-family:Balsamiq Sans;">Other</h4>
+            <br>
+            
+            <div class='row cat' id='otherSection'>
+                
+            </div>
+            <br><br>
         </div>
         
    <!-- <input id="item" placeholder="item">
@@ -321,8 +346,144 @@ var firebaseConfig = {
       })
   })
   
+  function catElect() {
+     document.querySelector("#catPageContent").innerHTML = ""
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "none";
+          db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          var catPage = document.querySelector("#catPage");
+          var catPageContent = document.querySelector("#catPageContent")
+          document.querySelector("#catPageName").innerHTML = "Electronics"
+      if (doc.data().proCat == "Electronics") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          catPageContent.innerHTML += elect
+          catPage.style.display = "block"
+      }
+      })
+          })
+  }
+  
+  
+  
+  function catKitchen() {
+     document.querySelector("#catPageContent").innerHTML = ""
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "none";
+          db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          var catPage = document.querySelector("#catPage");
+          var catPageContent = document.querySelector("#catPageContent")
+          document.querySelector("#catPageName").innerHTML = "Kitchen"
+      if (doc.data().proCat == "Kitchen") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          catPageContent.innerHTML += elect
+          catPage.style.display = "block"
+      }
+      })
+          })
+  }
+  
+  
+  
+  function catFas() {
+     document.querySelector("#catPageContent").innerHTML = ""
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "none";
+          db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          var catPage = document.querySelector("#catPage");
+          var catPageContent = document.querySelector("#catPageContent")
+          document.querySelector("#catPageName").innerHTML = "Fashion"
+      if (doc.data().proCat == "Fashion") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          catPageContent.innerHTML += elect
+          catPage.style.display = "block"
+      }
+      })
+          })
+  }
+  
+  
+  
+  function catOther() {
+     document.querySelector("#catPageContent").innerHTML = ""
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "none";
+          db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          var catPage = document.querySelector("#catPage");
+          var catPageContent = document.querySelector("#catPageContent")
+          document.querySelector("#catPageName").innerHTML = "Other"
+      if (doc.data().proCat == "Other") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          catPageContent.innerHTML += elect
+          catPage.style.display = "block"
+      }
+      })
+          })
+  }
+  
+  
   
   document.querySelector("#searchbtn").addEventListener("click", () => {
+      document.querySelector("#sp").innerHTML = ""
   document.getElementById("overlay").style.display = "block"
       document.getElementById("load").style.display = "block"
       searchItem = document.querySelector("#search").value
@@ -332,6 +493,7 @@ var firebaseConfig = {
           if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
               document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
       var sp = document.querySelector("#sp");
+     // sp.innerHTML = ""
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
@@ -348,6 +510,8 @@ var firebaseConfig = {
           document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
       document.getElementById("searchPage").style.display = "block";
+      
+          document.getElementById("catPage").style.display = "none"
           }
           else {
               document.getElementById("overlay").style.display = "none"
@@ -355,7 +519,7 @@ var firebaseConfig = {
       document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
       
      // var sp = document.querySelector("#sp");
-         // sp.innerHTML = "No Item Found"
+          //sp.innerHTML = "No Item Found"
       document.getElementById("searchPage").style.display = "block";
           document.getElementById("proPage").style.display = "none"
           document.getElementById("homePage").style.display = "none"
@@ -375,6 +539,8 @@ var firebaseConfig = {
   function renderDoc(doc) {
       var electS = document.querySelector("#electSection");
       var kitchenS = document.querySelector("#kitchenSection");
+      var FashionS = document.querySelector("#FashionSection");
+      var OtherS = document.querySelector("#otherSection");
       if (doc.data().proCat == "Electronics") {
          
           
@@ -385,6 +551,7 @@ var firebaseConfig = {
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
+              
           
           elect += "</div>"
           electS.innerHTML += elect
@@ -406,6 +573,36 @@ var firebaseConfig = {
           kitchenS.innerHTML += elect
       }
       
+     if (doc.data().proCat == "Fashion") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          FashionS.innerHTML += elect
+      }
+     if (doc.data().proCat == "Other") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          OtherS.innerHTML += elect
+      }
   }
   
   function tap(self) {
@@ -420,7 +617,6 @@ var firebaseConfig = {
           document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
             document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
           document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-          
           num = 'https://wa.me/+234' + doc.data().proNum
           document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
           document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
@@ -429,16 +625,59 @@ var firebaseConfig = {
           document.getElementById("homePage").style.display = "none"
           document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
-      document.getElementById("searchPage").style.display = "none"
+          document.getElementById("searchPage").style.display = "none"
+          document.getElementById("catPage").style.display = "none"
+          
+          document.getElementById("goBack2").style.display = "none"
+          document.getElementById("goBack").style.display = "block"
+  
       })
   }
+  
+  function tap2(self) {
+      document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
+      let id = self.getAttribute('data-id');
+      console.log(id)
+      db.doc("products/" + id).get().then((doc) => {
+          //console.log(doc.data().proCat)
+          document.getElementById("proPageName").innerHTML = doc.data().proName
+          document.getElementById("proPageImg").innerHTML = "<img src='" + doc.data().proImgUrl + "'>"
+          document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+            document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+          document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
+          num = 'https://wa.me/+234' + doc.data().proNum
+          document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
+          document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
+          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+          document.getElementById("proPage").style.display = "block"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+          document.getElementById("searchPage").style.display = "none"
+          document.getElementById("catPage").style.display = "none"
+          document.getElementById("goBack").style.display = "none"
+          document.getElementById("goBack2").style.display = "block"
+          
+  
+      })
+  }
+  
   
   function goBack() {
       document.getElementById("homePage").style.display = "block"
           document.getElementById("proPage").style.display = "none"
-          
-      document.getElementById("searchPage").style.display = "none"
+          document.getElementById("searchPage").style.display = "none"
+          document.getElementById("catPage").style.display = "none"
   }
+  
+  function goBack2() {
+      document.getElementById("homePage").style.display = "none"
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("searchPage").style.display = "none"
+          document.getElementById("catPage").style.display = "block"
+  }
+
   // Your web app's Firebase configuration
  /* try {
   var firebaseConfig = {
