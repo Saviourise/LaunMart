@@ -76,7 +76,7 @@
                 font-size: 20px;
             }
             
-            #proPage {
+            #proPage, #searchPage {
                 display: none;
             }
             
@@ -150,7 +150,7 @@
     </div>
     <input type="search" class="form-control" id="search" placeholder="Search Products">
     <div class="input-group-append">
-        <button class="btn btn-success">Search</button>
+        <button class="btn btn-success" id="searchbtn">Search</button>
     </div>
   </div>
 </div>
@@ -213,6 +213,17 @@
                </div><br>
            </div>
         
+        <div class="container w3-center" id="searchPage">
+            <h4 id="tops" style="font-family:Balsamiq Sans;" class="container w3-center">Result for </h4>
+            <br>
+            
+            <div class='row cat w3-center' id='sp'>
+                
+            </div>
+            <div class="container">
+                <button class="btn btn-primary" onclick="goBack()">Back</button>
+            </div>
+            </div>
         
         <div class="container-fluid w3-center" style="z-index:3;" id="homePage">
             <h3 style="font-family:Balsamiq Sans;">Flash Sales for you</h3>
@@ -311,6 +322,56 @@ var firebaseConfig = {
   })
   
   
+  document.querySelector("#searchbtn").addEventListener("click", () => {
+  document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
+      searchItem = document.querySelector("#search").value
+      if (searchItem != "") {
+          db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
+              document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+      var sp = document.querySelector("#sp");
+          elect = ""
+          
+          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              
+          
+          elect += "</div>"
+          sp.innerHTML += elect
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "block";
+          }
+          else {
+              document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+      
+     // var sp = document.querySelector("#sp");
+         // sp.innerHTML = "No Item Found"
+      document.getElementById("searchPage").style.display = "block";
+          document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
+          }
+      })
+  })
+  
+      }
+      else {
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      }
+      //console.log(searchItem)
+  })
+  
+  
   function renderDoc(doc) {
       var electS = document.querySelector("#electSection");
       var kitchenS = document.querySelector("#kitchenSection");
@@ -366,12 +427,15 @@ var firebaseConfig = {
           document.getElementById("homePage").style.display = "none"
           document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
+      document.getElementById("searchPage").style.display = "none"
       })
   }
   
   function goBack() {
       document.getElementById("homePage").style.display = "block"
           document.getElementById("proPage").style.display = "none"
+          
+      document.getElementById("searchPage").style.display = "none"
   }
   // Your web app's Firebase configuration
  /* try {
