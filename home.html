@@ -6,6 +6,8 @@
         
        <!-- <link type="text/css" href="style.css" rel="stylesheet">
         -->
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
         <script type="text/javascript" src="homeapp.js"></script>
         
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
@@ -28,8 +30,6 @@
  
         
         
-     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
 
@@ -75,7 +75,7 @@
                 font-size: 20px;
             }
             
-            #ta {
+            #proPage {
                 display: none;
             }
             
@@ -140,8 +140,20 @@
       <hr>
     <ul class="navbar-nav">
         <li class="nav-item row">
-            <i class="fa fa-search col-2"></i>
-        <input type="search" class="form-control col-8" placeholder="Search Products"><button class="btn btn-success"><i class="fa fa-search col-2"></i></button>
+            
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
+    <input type="search" class="form-control" id="search" placeholder="Search Products">
+    <div class="input-group-append">
+        <button class="btn btn-success">Search</button>
+    </div>
+  </div>
+</div>
+              </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="login.html"> <i style="color:black;" class="fa fa-sign-in-alt"> </i> Log In </a>
@@ -172,6 +184,33 @@
                <br><br>
                
            
+           <div class="container w3-border" id="proPage">
+               <div class="container w3-center w3-padding" id="proPageName">
+                   Product name
+               </div>
+               <div class="container w3-center" id="proPageImg">
+                   IMG url
+               </div>
+               <div class="container" id="proPageNomPrice">
+                   Normal Price:
+               </div>
+               <div class="container" id="proPageSellPrice">
+                   Selling Price:
+               </div>
+               <div class="container" id="proPageDes">
+                   Description :
+                   
+               </div>
+               <hr>
+               <div class="container" style="font-family:Balsamiq Sans;">
+                   <h5 style="font-family:Balsamiq Sans;">Contact Seller</h5>
+                   <p><i class="fab fa-whatsapp text-success"></i>  </p>
+                   <p>@  </p>
+               </div>
+               <div class="container">
+                   <button class="btn btn-primary" onclick="goBack()">Go Back</button><br>
+               </div>
+           </div>
         
         
         <div class="container-fluid w3-center" style="z-index:3;">
@@ -237,10 +276,6 @@
                 
             </div>
             <br><br>
-<div id="ta">
-    An error occurred<br>
-    <button id="tabtn">Try again</button>
-</div>
         </div>
         
    <!-- <input id="item" placeholder="item">
@@ -250,8 +285,89 @@
     <button onclick="go()">Enter</button>-->
 
 <script>
+var firebaseConfig = {
+    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+    authDomain: "launmart-14731.firebaseapp.com",
+    databaseURL: "https://launmart-14731.firebaseio.com",
+    projectId: "launmart-14731",
+    storageBucket: "launmart-14731.appspot.com",
+    messagingSenderId: "951616527792",
+    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore()
+  db.settings({timeStampsInSnapshot:true});
+  
+  
+  
+  db.collection("products").get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+          console.log(doc.data())
+          renderDoc(doc)
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
+      })
+  })
+  
+  
+  function renderDoc(doc) {
+      var electS = document.querySelector("#electSection");
+      var kitchenS = document.querySelector("#kitchenSection");
+      if (doc.data().proCat == "Electronics") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              elect += doc.data().proSellPrice
+          
+          elect += "</div>"
+          electS.innerHTML += elect
+      }
+     
+     if (doc.data().proCat == "Kitchen") {
+         
+          
+          elect = ""
+          
+          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<br>"
+              elect += doc.data().proName
+              elect += "<br>"
+              elect += doc.data().proSellPrice
+          
+          elect += "</div>"
+          kitchenS.innerHTML += elect
+      }
+      
+  }
+  
+  function tap(self) {
+      let id = self.getAttribute('data-id');
+      console.log(id)
+      db.doc("products/" + id).get().then((doc) => {
+          //console.log(doc.data().proCat)
+          document.getElementById("proPageName").innerHTML = doc.data().proName
+          document.getElementById("proPageImg").innerHTML = "<img src='" + doc.data().proImgUrl + "'>"
+          document.getElementById("proPageNomPrice").innerHTML = "Normal Price: " + doc.data().proNomPrice + "<br>"
+          document.getElementById("proPageSellPrice").innerHTML = "Selling Price: " + doc.data().proSellPrice
+          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+          document.getElementById("proPage").style.display = "block"
+          document.getElementById("homePage").style.display = "none"
+      })
+  }
+  
+  function goBack() {
+      document.getElementById("homePage").style.display = "block"
+          document.getElementById("proPage").style.display = "none"
+  }
   // Your web app's Firebase configuration
-  try {
+ /* try {
   var firebaseConfig = {
     apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
     authDomain: "launmart-14731.firebaseapp.com",
@@ -324,7 +440,7 @@
       document.getElementById("body").style = "none"
       document.getElementById("ta").style = "block"
   
-  }
+  }*/
   
   
   
