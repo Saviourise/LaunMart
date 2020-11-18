@@ -349,6 +349,8 @@ var firebaseConfig = {
   }
   
   function tap(self) {
+document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
       let id = self.getAttribute('data-id');
       console.log(id)
       db.doc("products/" + id).get().then((doc) => {
@@ -360,6 +362,8 @@ var firebaseConfig = {
           document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
           document.getElementById("proPage").style.display = "block"
           document.getElementById("homePage").style.display = "none"
+document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
       })
   }
   
