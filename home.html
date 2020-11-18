@@ -420,7 +420,9 @@ var firebaseConfig = {
           document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
             document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
           document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-          document.getElementById("proPageNum").innerHTML = "<i class='fab fa-whatsapp text-success'>" +   doc.data().proNum
+          
+          num = 'https://wa.me/+234' + doc.data().proNum
+          document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
           document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
           document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
           document.getElementById("proPage").style.display = "block"
