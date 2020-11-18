@@ -80,6 +80,10 @@
                 display: none;
             }
             
+            i {
+                font-family: Balsamiq Sans;
+            }
+            
             @media(max-width: 768px){
                 .cat {
                     max-height: 320px;
@@ -157,12 +161,6 @@
               </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="acc.html"> <i style="color:black;" class="fa fa-user"> </i> Account </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i style="color:black;" class="fa fa-shopping-cart"> </i> Cart</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
         <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
         <a class="dropdown-item" href="#electSection">Electronics</a>
@@ -184,6 +182,7 @@
 </nav>
                <br><br>
                
+           
            <div class="container w3-border" id="proPage">
                <div class="container w3-center w3-padding" id="proPageName">
                    Product name
@@ -191,11 +190,11 @@
                <div class="container w3-center" id="proPageImg">
                    IMG url
                </div>
-               <div class="container" id="proPageNomPrice">
-                   Normal Price:
+               <div class="container" id="proPagePrice">
+                   Price:
                </div>
-               <div class="container" id="proPageSellPrice">
-                   Selling Price:
+               <div class="container">
+                   Negotiable
                </div>
                <div class="container" id="proPageDes">
                    Description :
@@ -204,12 +203,18 @@
                <hr>
                <div class="container" style="font-family:Balsamiq Sans;">
                    <h5 style="font-family:Balsamiq Sans;">Contact Seller</h5>
-                   <p><i class="fab fa-whatsapp text-success"></i>  </p>
-                   <p>@  </p>
+                   <p id="proSellerName">
+                       Seller:
+                   </p>
+                   <p id="proPageNum" style="font-family:Balsamiq Sans;"><i class="fab fa-whatsapp text-success"></i>  </p>
+                   <p id="proPageEmail">@  </p>
                </div>
+               <div class="container" id="proPageSellerLoc">
+                   Seller Location:
+               </div><hr>
                <div class="container">
                    <button class="btn btn-primary" onclick="goBack()">Go Back</button><br>
-               </div>
+               </div><br>
            </div>
         
         
@@ -349,7 +354,7 @@ var firebaseConfig = {
   }
   
   function tap(self) {
-document.getElementById("overlay").style.display = "block"
+      document.getElementById("overlay").style.display = "block"
       document.getElementById("load").style.display = "block"
       let id = self.getAttribute('data-id');
       console.log(id)
@@ -357,12 +362,15 @@ document.getElementById("overlay").style.display = "block"
           //console.log(doc.data().proCat)
           document.getElementById("proPageName").innerHTML = doc.data().proName
           document.getElementById("proPageImg").innerHTML = "<img src='" + doc.data().proImgUrl + "'>"
-          document.getElementById("proPageNomPrice").innerHTML = "Normal Price: " + doc.data().proNomPrice + "<br>"
-          document.getElementById("proPageSellPrice").innerHTML = "Selling Price: " + doc.data().proSellPrice
+          document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+            document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+          document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
+          document.getElementById("proPageNum").innerHTML = "<i class='fab fa-whatsapp text-success'>" + doc.data().proNum
+          document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
           document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
           document.getElementById("proPage").style.display = "block"
           document.getElementById("homePage").style.display = "none"
-document.getElementById("overlay").style.display = "none"
+          document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
       })
   }
