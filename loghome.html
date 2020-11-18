@@ -53,7 +53,7 @@
                 height:500px;
             }
             .cat {
-                height:640px;
+                max-height:640px;
                 overflow: hidden;
                 
             }
@@ -82,7 +82,7 @@
             
             @media(max-width: 768px){
                 .cat {
-                    height: 320px;
+                    max-height: 320px;
                 }
                 img {
                     height:250px;
@@ -324,7 +324,7 @@ var firebaseConfig = {
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
-              elect += doc.data().proSellPrice
+              
           
           elect += "</div>"
           electS.innerHTML += elect
@@ -340,7 +340,7 @@ var firebaseConfig = {
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
-              elect += doc.data().proSellPrice
+              
           
           elect += "</div>"
           kitchenS.innerHTML += elect
