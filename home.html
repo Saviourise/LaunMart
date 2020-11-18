@@ -45,9 +45,7 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-swal({"Welcome to LaunMart", "Note: All Prices are negotiable", "info"})
-</script>
+  
         
         <style>
             img {
@@ -644,7 +642,11 @@ var firebaseConfig = {
   
       })
   }
-  
+  swal({
+    title: "Welcome to LaunMart",
+    text: "Note: All Prices are Negotiable",
+    icon: "info"
+})
   function tap2(self) {
       document.getElementById("overlay").style.display = "block"
       document.getElementById("load").style.display = "block"
