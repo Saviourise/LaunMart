@@ -145,6 +145,8 @@
     <span class="dropdown-item" onclick="proCatElect()">Electronics</span>
     <span class="dropdown-item" onclick="proCatKit()">Kitchen</span>
     <span class="dropdown-item" onclick="proCatFas()">Fashion</span>
+    
+    <span class="dropdown-item" onclick="proCatOther()">Other</span>
   </div>
 </div>
   </div>
@@ -168,7 +170,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
     </div>
-    <input type="Number" class="form-control" id="number" placeholder="WhatsApp contact">
+    <input type="Number" class="form-control" id="number" placeholder="WhatsApp contact Number">
   </div>
 </div>       
 </div>
@@ -253,6 +255,10 @@
       
       function proCatFas() {
           document.getElementById("proCat").value = "Fashion"
+      }
+      
+      function proCatOther() {
+          document.getElementById("proCat").value = "Other"
       }
       document.getElementById("upLoad").addEventListener("click", (e) => {
           
