@@ -46,7 +46,7 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
-swal({"Welcome to LaunMart", "Note: All Prices are negotiable", "info")}
+swal({"Welcome to LaunMart", "Note: All Prices are negotiable", "info"})
 </script>
         
         <style>
@@ -352,8 +352,8 @@ var firebaseConfig = {
      document.querySelector("#catPageContent").innerHTML = ""
           document.getElementById("proPage").style.display = "none"
           document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
+          document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
       document.getElementById("searchPage").style.display = "none";
           db.collection("products").get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -375,6 +375,8 @@ var firebaseConfig = {
           elect += "</div>"
           catPageContent.innerHTML += elect
           catPage.style.display = "block"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
       }
       })
           })
@@ -386,8 +388,8 @@ var firebaseConfig = {
      document.querySelector("#catPageContent").innerHTML = ""
           document.getElementById("proPage").style.display = "none"
           document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
+          document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
       document.getElementById("searchPage").style.display = "none";
           db.collection("products").get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -409,6 +411,8 @@ var firebaseConfig = {
           elect += "</div>"
           catPageContent.innerHTML += elect
           catPage.style.display = "block"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
       }
       })
           })
@@ -419,8 +423,8 @@ var firebaseConfig = {
   function catFas() {
      document.querySelector("#catPageContent").innerHTML = ""
           document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
+          document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
       document.getElementById("load").style.display = "none"
       document.getElementById("searchPage").style.display = "none";
           db.collection("products").get().then((snapshot) => {
@@ -443,6 +447,8 @@ var firebaseConfig = {
           elect += "</div>"
           catPageContent.innerHTML += elect
           catPage.style.display = "block"
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
       }
       })
           })
@@ -454,8 +460,8 @@ var firebaseConfig = {
      document.querySelector("#catPageContent").innerHTML = ""
           document.getElementById("proPage").style.display = "none"
           document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
+          document.getElementById("overlay").style.display = "block"
+      document.getElementById("load").style.display = "block"
       document.getElementById("searchPage").style.display = "none";
           db.collection("products").get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -477,6 +483,9 @@ var firebaseConfig = {
           elect += "</div>"
           catPageContent.innerHTML += elect
           catPage.style.display = "block"
+
+          document.getElementById("overlay").style.display = "none"
+      document.getElementById("load").style.display = "none"
       }
       })
           })
