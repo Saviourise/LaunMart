@@ -45,7 +45,9 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+               
+
+        
         
         <style>
             img {
@@ -68,7 +70,7 @@
             }
             
             .catImg {
-                height: 200px;
+                height: 230px;
             }
             
             li{
@@ -88,7 +90,7 @@
                     height:250px;
                 }
                 .catImg {
-                    height: 100px;
+                    height: 90px;
                 }
             
             #load {
@@ -157,7 +159,7 @@
               </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="home.html"><i style="color:black;" class="fa fa-building"> </i> Home</a>
+        <a class="nav-link" href="home.html"><i style="color:black;" class="fa fa-home"> </i> Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
@@ -237,11 +239,24 @@
             </div>
             
         <div class="container-fluid w3-center" style="z-index:3;" id="homePage">
+            
+            
+            
+            
+            <div class="container">
+                <marquee><p>Welcome to LaunMart <i class="fa fa-shopping-cart"></i>....  Happy Festive Season From LaunMart  <img style="height:80px;" src="https://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif" alt="Merry Christmas"></p></marquee>
+            </div>
+            
+            
+            
+            
+            
+            
             <h3 style="font-family:Balsamiq Sans;">Flash Sales for you</h3>
             <br>
             
             
-            <div id="demo" style="z-index:1;" class="carousel slide" data-ride="carousel" data-interval="2000">
+            <div id="demo" style="z-index:1;" class="carousel slide container" data-ride="carousel" data-interval="2000">
 
   <!-- Indicators -->
   <ul class="carousel-indicators">
@@ -287,7 +302,7 @@
             <h4 id="topCat" style="font-family:Balsamiq Sans;">Electronics</h4>
             <br>
             
-            <div class='row cat' id='electSection'>
+            <div class='row cat container' id='electSection'>
                 
             </div>
             <br><br>
@@ -295,21 +310,21 @@
             <h4 style="font-family:Balsamiq Sans;">Kitchen</h4>
             <br>
             
-            <div class='row cat' id='kitchenSection'>
+            <div class='row cat container' id='kitchenSection'>
                 
             </div>
             <br><br>
             <h4 style="font-family:Balsamiq Sans;">Fashion</h4>
             <br>
             
-            <div class='row cat' id='FashionSection'>
+            <div class='row cat container' id='FashionSection'>
                 
             </div>
             <br><br>
             <h4 style="font-family:Balsamiq Sans;">Other</h4>
             <br>
             
-            <div class='row cat' id='otherSection'>
+            <div class='row cat container' id='otherSection'>
                 
             </div>
             <br><br>
@@ -322,6 +337,11 @@
     <button onclick="go()">Enter</button>-->
 
 <script>
+swal({
+    title: "Welcome to LaunMart",
+    text: "Note: All Prices are Negotiable",
+    icon: "info"
+})
 var firebaseConfig = {
     apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
     authDomain: "launmart-14731.firebaseapp.com",
@@ -421,9 +441,9 @@ var firebaseConfig = {
   function catFas() {
      document.querySelector("#catPageContent").innerHTML = ""
           document.getElementById("proPage").style.display = "none"
+          document.getElementById("homePage").style.display = "none"
           document.getElementById("overlay").style.display = "block"
       document.getElementById("load").style.display = "block"
-      document.getElementById("homPage").style.display = "none"
       document.getElementById("searchPage").style.display = "none";
           db.collection("products").get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -481,7 +501,6 @@ var firebaseConfig = {
           elect += "</div>"
           catPageContent.innerHTML += elect
           catPage.style.display = "block"
-
           document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
       }
@@ -642,11 +661,7 @@ var firebaseConfig = {
   
       })
   }
-  swal({
-    title: "Welcome to LaunMart",
-    text: "Note: All Prices are Negotiable",
-    icon: "info"
-})
+  
   function tap2(self) {
       document.getElementById("overlay").style.display = "block"
       document.getElementById("load").style.display = "block"
