@@ -188,10 +188,43 @@
            <div class="container w3-border" id="proPage">
                <div class="container w3-center w3-padding" id="proPageName">
                    Product name
-               </div>
-               <div class="container w3-center" id="proPageImg">
+               </div><div id="demo2" style="z-index:1;" class="carousel slide container" data-ride="carousel" data-interval="2000">
+
+  <!-- Indicators -->
+ <!--<ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>-->
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active" id="proPageImg1">
+        
+      
+    </div>
+    <div class="carousel-item" id="proPageImg2">
+  
+      
+    </div>
+    <div class="carousel-item" id="proPageImg3">
+  
+      
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+    <span style="z-index:3;" class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo2" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+             <!--  <div class="container w3-center" id="proPageImg">
                    IMG url
-               </div>
+               </div>-->
                <div class="container" id="proPagePrice">
                    Price:
                </div>
@@ -384,7 +417,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -420,7 +453,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -456,7 +489,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -492,7 +525,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -525,7 +558,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -575,7 +608,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -591,7 +624,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -607,7 +640,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -622,7 +655,7 @@ var firebaseConfig = {
           elect = ""
           
           elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl + " '";
+              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
               elect += "<br>"
               elect += doc.data().proName
               elect += "<br>"
@@ -641,7 +674,9 @@ var firebaseConfig = {
       db.doc("products/" + id).get().then((doc) => {
           //console.log(doc.data().proCat)
           document.getElementById("proPageName").innerHTML = doc.data().proName
-          document.getElementById("proPageImg").innerHTML = "<img src='" + doc.data().proImgUrl + "'>"
+          document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+          document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+          document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
           document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
             document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
           document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
@@ -670,7 +705,9 @@ var firebaseConfig = {
       db.doc("products/" + id).get().then((doc) => {
           //console.log(doc.data().proCat)
           document.getElementById("proPageName").innerHTML = doc.data().proName
-          document.getElementById("proPageImg").innerHTML = "<img src='" + doc.data().proImgUrl + "'>"
+          document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+          document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+          document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
           document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
             document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
           document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
