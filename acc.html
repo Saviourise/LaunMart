@@ -122,7 +122,31 @@
     <div class="input-group-prepend">
       <span class="input-group-text">@</span>
     </div>
-    <input type="url" class="form-control" id="proImgUrl" placeholder="Product Image Url">
+    <input type="url" class="form-control" id="proImgUrl1" placeholder="Add Product Image">
+  </div>
+</div>
+              </div>
+              
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">@</span>
+    </div>
+    <input type="url" class="form-control" id="proImgUrl2" placeholder="Add Product Image">
+  </div>
+</div>
+              </div>
+              
+              
+              <div class="container w3-container">
+                  <div class="container">
+              <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">@</span>
+    </div>
+    <input type="url" class="form-control" id="proImgUrl3" placeholder="Add Product Image">
   </div>
 </div>
               </div>
@@ -269,7 +293,9 @@
           var proBtn = 
       document.getElementById("upLoad")
           var proName = document.getElementById("proName").value
-          var proImgUrl = document.getElementById("proImgUrl").value
+          var proImgUrl1 = document.getElementById("proImgUrl1").value
+          var proImgUrl2 = document.getElementById("proImgUrl2").value
+          var proImgUrl3 = document.getElementById("proImgUrl3").value
           var proCat = document.getElementById("proCat").value
           var proPrice = document.getElementById("proPrice").value
           var proEmail = document.getElementById("email").value
@@ -279,7 +305,7 @@
           var proNum = document.getElementById("number").value
           var proDes = document.getElementById("proDes").value
           
-          if(proName!="" && proImgUrl!="" && proCat!="" && proPrice!="" && proEmail!="" && proNum!="" && proSellerLoc!="" && proSeller!="" && proDes!="") {
+          if(proName!="" && proImgUrl1!="" && proImgUrl2!="" && proImgUrl3!="" && proCat!="" && proPrice!="" && proEmail!="" && proNum!="" && proSellerLoc!="" && proSeller!="" && proDes!="") {
               proBtn.disabled = false
           }
           else {
@@ -293,7 +319,9 @@
           overlay.style.display = "block"
           load.style.display = "block"
           var proName = document.getElementById("proName").value
-          var proImgUrl = document.getElementById("proImgUrl").value
+          var proImgUrl1 = document.getElementById("proImgUrl1").value
+          var proImgUrl2 = document.getElementById("proImgUrl2").value
+          var proImgUrl3 = document.getElementById("proImgUrl3").value
           var proCat = document.getElementById("proCat").value
           var proPrice = document.getElementById("proPrice").value
           var proSeller = document.getElementById("proSeller").value
@@ -304,7 +332,9 @@
           var proDes = document.getElementById("proDes").value
           db.collection("products").add({
               proName: proName,
-              proImgUrl: proImgUrl,
+              proImgUrl1: proImgUrl1,
+              proImgUrl2: proImgUrl2,
+              proImgUrl3: proImgUrl3,
               proCat: proCat,
               proPrice: proPrice,
               proEmail: proEmail,
@@ -318,7 +348,9 @@
                   icon: "success"
               })
           document.getElementById("proName").value = ""
-          document.getElementById("proImgUrl").value = ""
+          var proImgUrl1 = document.getElementById("proImgUrl1").value = ""
+          var proImgUrl2 = document.getElementById("proImgUrl2").value = ""
+          var proImgUrl3 = document.getElementById("proImgUrl3").value = ""
           document.getElementById("proCat").value = ""
           var proPrice = document.getElementById("proPrice").value = ""
           var proEmail = document.getElementById("email").value = ""
