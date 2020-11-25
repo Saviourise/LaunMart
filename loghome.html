@@ -164,12 +164,12 @@
         <a class="nav-link" href="loghome.html"><i style="color:black;" class="fa fa-home"> </i> Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
+        <a class="text-white w3-opacity dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
         <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
-        <a class="dropdown-item" onclick="catElect()">Electronics</a>
-        <a class="dropdown-item" onclick="catKitchen()">Kitchen</a>
-        <a class="dropdown-item" onclick="catFas()">Fashion</a>
-        <a class="dropdown-item" onclick="catOther()">Other</a>
+        <a class="nav-link dropdown-item" onclick="catElect()">Electronics</a>
+        <a class="nav-link dropdown-item" onclick="catKitchen()">Kitchen</a>
+        <a class="nav-link dropdown-item" onclick="catFas()">Fashion</a>
+        <a class="nav-link dropdown-item" onclick="catOther()">Other</a>
       </div>
       </li>
       <li class="nav-item">
@@ -394,7 +394,9 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore()
   db.settings({timeStampsInSnapshot:true});
-  
+  $('.nav-link').on('click',function() {
+  $('.navbar-collapse').collapse('hide');
+});
   
   
   db.collection("products").get().then((snapshot) => {
