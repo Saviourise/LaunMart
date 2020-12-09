@@ -48,6 +48,7 @@
         
         
         <style>
+          
             img {
                 width: 100%;
                 height:500px;
@@ -81,9 +82,17 @@
             }
             
             i {
-                font-family: Balsamiq Sans;
+                font-family: Raleway;
             }
             
+            #catPageName, h3, h4 {
+                font-weight: bolder;
+            }
+            hr {
+                margin-left: -20px;
+                margin-right: -20px;
+                border-color: blue;
+            }
             @media(max-width: 768px){
                 .cat {
                     max-height: 320px;
@@ -107,7 +116,7 @@
     
     
     
-    <body class="bg-white" style="font-family:Balsamiq Sans;" id="body">
+    <body class="bg-white" style="font-family:Raleway;" id="body">
         
       
         <div class="w3-overlay w3-animate-opacity"  style="cursor:pointer; z-index:5;" id="overlay"></div>
@@ -123,7 +132,7 @@
         <div id="home">
             
            <!-- <header class="jumbotron bg-primary text-white">
-               <h3 style="font-family:Balsamiq Sans; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
+               <h3 style="font-family:Raleway; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
                </h3>
                <p>Welcome Guest <span class="w3-right">Login</span></p>
             </header>-->
@@ -132,7 +141,7 @@
             
 <nav class="navbar bg-primary navbar-dark sticky-top" style="z-index:4;">
   <!-- Brand -->
-  <h3 class="navbar-brand" style="font-family:Balsamiq Sans;">LaunMart <i class="fa fa-shopping-cart"></i></h3>
+  <h3 class="navbar-brand" style="font-family:Raleway;">LaunMart <i class="fa fa-shopping-cart"></i></h3>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -164,7 +173,7 @@
         <a class="nav-link" href="loghome.html"><i style="color:black;" class="fa fa-home"> </i> Home</a>
       </li>
       <li class="nav-item">
-        <a class="text-white w3-opacity dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
+        <a class="dropdown-toggle text-white w3-opacity" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
         <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
         <a class="nav-link dropdown-item" onclick="catElect()">Electronics</a>
         <a class="nav-link dropdown-item" onclick="catKitchen()">Kitchen</a>
@@ -245,12 +254,12 @@
                    
                </div>
                <hr>
-               <div class="container" style="font-family:Balsamiq Sans;">
-                   <h5 style="font-family:Balsamiq Sans;">Contact Seller</h5>
+               <div class="container" style="font-family:Raleway;">
+                   <h5 style="font-family:Raleway;">Contact Seller</h5>
                    <p id="proSellerName">
                        Seller:
                    </p>
-                   <p id="proPageNum" style="font-family:Balsamiq Sans;"><i class="fab fa-whatsapp text-success"></i>  </p>
+                   <p id="proPageNum" style="font-family:Raleway;"><i class="fab fa-whatsapp text-success"></i>  </p>
                    <p id="proPageEmail">@  </p>
                </div>
                <div class="container" id="proPageSellerLoc">
@@ -263,7 +272,7 @@
            </div>
         
         <div class="container w3-center" id="searchPage">
-            <h4 id="tops" style="font-family:Balsamiq Sans;" class="container w3-center">Result for </h4>
+            <h4 id="tops" style="font-family:Raleway;" class="container w3-center">Result for </h4>
             <br>
             
             <div class='row w3-center' id='sp'>
@@ -275,7 +284,7 @@
             </div>
             
             <div id="catPage" class="container w3-center">
-                <h4 style="font-family:Balsamiq Sans;"id="catPageName"></h4>
+                <h4 style="font-family:Raleway;"id="catPageName"></h4>
                 <br>
                 <div id="catPageContent" class="container row"></div>
             </div>
@@ -292,7 +301,7 @@
             </div>
             
             
-            <h3 style="font-family:Balsamiq Sans;">Flash Sales for you</h3>
+            <h3 style="font-family:Raleway;">Flash Sales for you</h3>
             <br>
             
             
@@ -309,7 +318,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
         <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Great Deals just for you</h4>
+    <h4 style="color:black; z-index:0; font-family:Raleway;">Great Deals just for you</h4>
   </div>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTywlfKWkurnonJ8JMjeywSczsyzSXOqTYCqw&usqp=CAU" class="w3-opacity" alt="Great deals">
       
@@ -317,13 +326,13 @@
     <div class="carousel-item">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQSnzbuvtiXiTWL9aEOx1S_aefoaV-u9zQdIw&usqp=CAU" class="w3-opacity" alt="Exclusive offers">
       <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Exclusive Offers coming your way</h4>
+    <h4 style="color:black; z-index:0; font-family:Raleway;">Exclusive Offers coming your way</h4>
   </div>
     </div>
     <div class="carousel-item">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR8vEk0tkIMuqols2_03poB09z4CyAqa5Pm1Q&usqp=CAU" class="w3-opacity" alt="Cheap prices">
       <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Balsamiq Sans;">Cheap and Affordable prices</h4>
+    <h4 style="color:black; z-index:0; font-family:Raleway;">Cheap and Affordable prices</h4>
   </div>
     </div>
   </div>
@@ -337,9 +346,9 @@
   </a>
 
 </div><br>
-<h3 style="font-family:Balsamiq Sans;">Categories</h3>
+<h3 style="font-family:Raleway;">Categories</h3>
             <br>
-            <h4 id="topCat" style="font-family:Balsamiq Sans;">Electronics</h4>
+            <h4 onclick="catElect()" id="topCat" style="font-family:Raleway;">Electronics<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
             <br>
             
             <div class='row cat container' id='electSection'>
@@ -347,34 +356,34 @@
             </div>
             <br><br>
             
-            <h4 style="font-family:Balsamiq Sans;">Kitchen</h4>
+            <h4 onclick="catKitchen()" style="font-family:Raleway;">Kitchen<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
             <br>
             
             <div class='row cat container' id='kitchenSection'>
                 
             </div>
             <br><br>
-            <h4 style="font-family:Balsamiq Sans;">Fashion</h4>
+            <h4 onclick="catFas()" style="font-family:Raleway;">Fashion<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
             <br>
             
             <div class='row cat container' id='FashionSection'>
                 
             </div>
             <br><br>
-            <h4 style="font-family:Balsamiq Sans;">Other</h4>
+            <h4  onclick="catOther()" style="font-family:Raleway;">Other<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
             <br>
             
             <div class='row cat container' id='otherSection'>
                 
             </div>
-            <br><br>
-
-        </div>
-          
+            <br><hr>
+    
 <div class="pt-4 w3-center">
     <p>Created By DivsTech</p>
     <p><a href="terms.html">Terms and conditions apply</a></p>
 </div>
+        </div>
+      
    <!-- <input id="item" placeholder="item">
     <input id="price" placeholder="price">
     <input id="pic" placeholder="pic">
@@ -394,9 +403,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore()
   db.settings({timeStampsInSnapshot:true});
-  $('.nav-link').on('click',function() {
-  $('.navbar-collapse').collapse('hide');
-});
+  
   
   
   db.collection("products").get().then((snapshot) => {
@@ -420,7 +427,7 @@ var firebaseConfig = {
       snapshot.docs.forEach(doc => {
           var catPage = document.querySelector("#catPage");
           var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "Electronics"
+          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Electronics"
       if (doc.data().proCat == "Electronics") {
          
           
@@ -457,7 +464,7 @@ var firebaseConfig = {
       snapshot.docs.forEach(doc => {
           var catPage = document.querySelector("#catPage");
           var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "Kitchen"
+          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Kitchen"
       if (doc.data().proCat == "Kitchen") {
          
           
@@ -494,7 +501,7 @@ var firebaseConfig = {
       snapshot.docs.forEach(doc => {
           var catPage = document.querySelector("#catPage");
           var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "Fashion"
+          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Fashion"
       if (doc.data().proCat == "Fashion") {
          
           
@@ -531,7 +538,7 @@ var firebaseConfig = {
       snapshot.docs.forEach(doc => {
           var catPage = document.querySelector("#catPage");
           var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "Other"
+          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Other"
       if (doc.data().proCat == "Other") {
          
           
@@ -555,7 +562,9 @@ var firebaseConfig = {
           })
   }
   
-  
+  $('.nav-link').on('click',function() {
+  $('.navbar-collapse').collapse('hide');
+});
   
   document.querySelector("#searchbtn").addEventListener("click", () => {
       document.querySelector("#sp").innerHTML = ""
@@ -702,7 +711,7 @@ var firebaseConfig = {
           num = 'https://wa.me/+234' + doc.data().proNum
           document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
           document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
           document.getElementById("proPage").style.display = "block"
           document.getElementById("homePage").style.display = "none"
           document.getElementById("overlay").style.display = "none"
@@ -734,7 +743,7 @@ var firebaseConfig = {
           num = 'https://wa.me/+234' + doc.data().proNum
           document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
           document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Balsamiq Sans;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
           document.getElementById("proPage").style.display = "block"
           document.getElementById("homePage").style.display = "none"
           document.getElementById("overlay").style.display = "none"
