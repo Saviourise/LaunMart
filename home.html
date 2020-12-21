@@ -378,7 +378,10 @@
             <div class='row cat container' id='otherSection'>
                 
             </div>
-            <br><hr>
+            <br>
+            <div id="nop" class="text-success">
+                
+            </div><hr>
         
           
 <div class="pt-4 w3-center">
@@ -408,6 +411,10 @@ var firebaseConfig = {
     appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
   };
   firebase.initializeApp(firebaseConfig);
+firebase.database().ref("No_of_pro").on("child_added", function(snapshot){
+    nop = snapshot.val()
+    document.getElementById("nop").innerHTML =nop + " Product(s) has been uploaded to Launmart."
+})
   const db = firebase.firestore()
   db.settings({timeStampsInSnapshot:true});
   
