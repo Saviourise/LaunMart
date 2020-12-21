@@ -272,7 +272,6 @@
       
       <!--<div id="products"></div>-->
       
-      
   </div>
   
   
@@ -289,6 +288,18 @@
     appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
   };
   firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+/*firebase.database().ref("No_of_pro").set({
+    no_of_pro: 0
+}).then(function() {
+    console.log("done")
+}).catch(function() {
+    console.log("undone")
+})*/
+
+
+  
+
   const db = firebase.firestore()
   db.settings({timeStampsInSnapshot:true});
       function proCatElect() {
@@ -374,13 +385,24 @@
               swal({
                   text:"Product added successfully",
                   icon: "success"
-              })
+              })  
+firebase.database().ref("No_of_pro").on("child_added", function(snapshot){
+    nop = snapshot.val()
+    nop = nop + 1
+    firebase.database().ref("No_of_pro").set({
+    no_of_pro: nop
+}).then(function() {
+    console.log("done")
+}).catch(function() {
+    console.log("undone")
+})
+})
           document.getElementById("proName").value = ""
           var proImgUrl1 = document.getElementById("proImgUrl1").value = ""
           var proImgUrl2 = document.getElementById("proImgUrl2").value = ""
           var proImgUrl3 = document.getElementById("proImgUrl3").value = ""
           var proImgUrl2 = document.getElementById("proImgUrl4").value = ""
-          var proImgUrl3 = document.getElementById("proImgUrl5").value = ""
+          var proImgUrl5 = document.getElementById("proImgUrl5").value = ""
           document.getElementById("proCat").value = ""
           var proPrice = document.getElementById("proPrice").value = ""
           var proEmail = document.getElementById("email").value = ""
@@ -393,6 +415,7 @@
           load.style.display = "none"
           }).catch((error) => {
               swal({
+                  title: error,
               text: "An Error Occurred while uploading the product. please try again",
               icon:"error"
               })
