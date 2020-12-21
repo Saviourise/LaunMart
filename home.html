@@ -412,6 +412,18 @@ var firebaseConfig = {
   db.settings({timeStampsInSnapshot:true});
   
   
+  n = 0
+  console.log(n)
+  var setI = setInterval(() => {
+      n = n+1
+      if(n == 10) {
+          clearInterval(setI)
+          console.log(n)
+          
+      document.getElementById("load").innerHTML = "An error occurred while retrieving data. Please refresh the page."
+      }
+  }, 1000)
+  
   
   db.collection("products").get().then((snapshot) => {
       snapshot.docs.forEach(doc => {
@@ -419,6 +431,7 @@ var firebaseConfig = {
           renderDoc(doc)
           document.getElementById("overlay").style.display = "none"
       document.getElementById("load").style.display = "none"
+        clearInterval(setI)
       })
   })
   
