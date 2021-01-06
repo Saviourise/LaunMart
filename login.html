@@ -47,7 +47,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
         <style>
-            
+            body {
+                display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 50px;
+              
+            }
             #load {
                 top:800px;
                 left:150px;
@@ -57,6 +63,12 @@
             #load {
                 top:300px;
                 left:0;
+            }
+            body {
+                padding: 30px;
+            }
+            .font {
+                font-size: 80%;
             }
 }
         </style>
@@ -81,13 +93,15 @@
         
         
         
-        <div id="login" class="container">
+        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.5); padding:20px;">
             <header>
-               <h3 style="font-family:Raleway; color:white;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i>
+               <h3 class="font" style="font-family:Raleway; color:white;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i><hr style="border-color:blue; margin-top:5px;">
                </h3>
             </header>
-               <br><br>
-               <h4 class="container w3-center text-white" style="font-family:Raleway;">Login <i class="fa fa-user"></i></h4><br><br>
+              
+               <h4 class="container font w3-center text-white" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
+               </h4>
+               <br>
             
             
             <form class="form-group container text-white" style="font-family:Raleway;">
@@ -96,7 +110,7 @@
                         
                         <div class="row">    
                         <div class="col-1 col-md-3"></div>
-                        <div class="col-10 col-md-6 input-group mb-3">
+                        <div class="col-10 font col-md-6 input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fa fa-envelope"></i></span>
     </div>
@@ -105,9 +119,9 @@
   <div class="col-1 col-md-3"></div>
                      </div>
                      <br>
-                <div class="row">    
+                <div class="row w3-center">    
                         <div class="col-1 col-md-3"></div>
-                        <div class="col-10 col-md-6 input-group mb-3">
+                        <div class="col-10 font col-md-6 input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text"><i class="fa fa-lock"></i></span>
     </div>
@@ -117,31 +131,30 @@
                      </div>
                         
                 <br>
-                <div class="row  w3-center">    
-                        <div class="col-1 col-md-3">
-                            
-                        </div>
-                        <div class="col-10 w3-center row col-md-6 mb-3">
-                            
-                    <button id="btn1" class="btn btn-success col-5">Log In <i class="fa fa-sign-in-alt"></i></button>
+                  
+                        
+                <div class="row w3-center">    
+                        <div class="col-1 col-md-3"></div>
+                        <div class="col-10 col-md-6 input-group mb-3">
+
+                    <button id="btn1" class="btn btn-success col-5 font">Log In <i class="fa fa-sign-in-alt"></i></button>
                     <span class="col-2"></span>
-                    
-      <button style="font-size:12px;" id="btn2" class="btn btn-warning col-5">
+      <button style="font-size:12px;" id="btn2" class="btn btn-warning font col-5">
                        Sign Up <i class="fa fa-plus"></i>
                     </button>
   </div>
-  <div class="col-1 col-md-3">
-  </div>
+  <div class="col-1 col-md-3"></div>   
+           
                      </div>
                 
                 <br>
                 
-                <div class="container row">
-                    <div class="col-1"></div>
-                <button id="btn3" class="btn btn-success col-10">
+                <div class="row w3-padding">
+                    <div class="col-1 col-md-3"></div>
+                <button id="btn3" class="btn btn-success col-10 font col-md-6">
                     Log In as Guest <i class="fa fa-user"></i>
                 </button>
-                <div class="col-1"></div>
+                <div class="col-1 col-md-3"></div>
                 </div>
             </form>
             
