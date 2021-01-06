@@ -48,10 +48,31 @@
         
         <style>
             body {
+              background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicHgMLGq3FVbKemC0oa5udm_1xNGerYFZRA&usqp=CAU');
+        
+    -ms-background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+    backdrop-filter: blur(8px);
+    /*filter: blur(8px);
+  -webkit-filter: blur(8px);*/
+
+    
+
+}
+#body {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(6px);
+   height: 100vh;
+  width: 100%;
+
                 display: flex;
               align-items: center;
               justify-content: center;
               padding: 50px;
+}
+.my-container h1 {
               
             }
             #load {
@@ -64,11 +85,12 @@
                 top:300px;
                 left:0;
             }
-            body {
+            #body {
                 padding: 30px;
             }
             .font {
-                font-size: 90%;
+                font-size: 100%;
+                
             }
 }
         </style>
@@ -79,9 +101,9 @@
     
     
     
-    <body class="bg-primary" style="font-family:Raleway;">
+    <body style="font-family:Raleway;">
         
-      
+      <div id="body">
         <div class="w3-overlay w3-animate-opacity" style="cursor:pointer; z-index:5;" id="overlay"></div>
         
         <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed; display:none;" id="load">
@@ -93,13 +115,13 @@
         
         
         
-        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.5); padding:20px;">
+        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); padding:20px;">
             <header>
-               <h3 class="font" style="font-family:Raleway; color:white;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i><hr style="border-color:blue; margin-top:5px;">
+               <h3 class="font" style="font-family:Raleway; font-weight:bolder;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i><hr style="border-color:blue; margin-top:5px;">
                </h3>
             </header>
               
-               <h4 class="container font w3-center text-white" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
+               <h4 class="container font w3-center" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
                </h4>
                <br>
             
@@ -159,7 +181,7 @@
             </form>
             
         </div>
-        
+        </div>
          <script>
           var firebaseConfig = {
     apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
