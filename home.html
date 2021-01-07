@@ -1,899 +1,1028 @@
 <!DOCTYPE html>
 <html>
-    <head>
-         <title>LaunMart || Online Shopping</title>
-        <meta charset="utf-8">
-        
-       <!-- <link type="text/css" href="style.css" rel="stylesheet">
-        -->
-     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
-        <script type="text/javascript" src="homeapp.js"></script>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<head>
+	<title>LaunMart || Online Shopping</title>
+	<meta charset="utf-8">
+
+	<!-- <link type="text/css" href="style.css" rel="stylesheet">
+																																					        -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+	<script type="text/javascript" src="homeapp.js"></script>
+
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        
-  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
- 
-  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
-        
-        
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-        <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-        
-        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
 
 
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-               
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
 
-        
-        
-        <style>
-            img {
-                width: 100%;
-                height:500px;
-            }
-            .cat {
-                max-height:640px;
-                overflow: hidden;
-                
-            }
-            
-            #catPageName, h3, h4 {
-                font-weight: bolder;
-            }
-            #load, #overlay {
-                display: block;
-            }
-            
-            #load {
-                top:800px;
-                left:150px;
-            }
-            
-            .catImg {
-                height: 230px;
-            }
-            
-            li{
-                list-style-type: none;
-                font-size: 20px;
-            }
-            hr {
-                margin-left: -20px;
-                margin-right: -20px;
-                border-color: blue;
-            }
-            #proPage, #searchPage {
-                display: none;
-            }
-            
-            @media(max-width: 768px){
-                .cat {
-                    max-height: 320px;
-                }
-                img {
-                    height:250px;
-                }
-                .catImg {
-                    height: 90px;
-                }
-            
-            #load {
-                top:300px;
-                left:0px;
-            }
-            }
-        </style>
-    </head>
-    
-    
-    
-    
-    
-    <body class="bg-white" style="font-family:Raleway;" id="body">
-        
-      
-        <div class="w3-overlay w3-animate-opacity"  style="cursor:pointer; z-index:5;" id="overlay"></div>
-        
-        <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
-                    <span class="spinner-grow spin text-white">
-                    </span><br><br>
-                LaunMart <i class="fa fa-shopping-cart"></i>
-                </div>
-        
-        
-        
-        <div id="home">
-            
-           <!-- <header class="jumbotron bg-primary text-white">
-               <h3 style="font-family:Raleway; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
-               </h3>
-               <p>Welcome Guest <span class="w3-right">Login</span></p>
-            </header>-->
-            
-            
-            
-<nav class="navbar bg-primary navbar-dark sticky-top" style="z-index:4;">
-  <!-- Brand -->
-  <h3 class="navbar-brand" style="font-family:Raleway;">LaunMart <i class="fa fa-shopping-cart"></i></h3>
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap" rel="stylesheet">
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon" style="outline:none;"></span>
-  </button>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Navbar links -->
-  
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <hr>
-    <ul class="navbar-nav">
-        <li class="nav-item row">
-            
-              <div class="container w3-container">
-                  <div class="container">
-              <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-search"></i></span>
-    </div>
-    <input type="search" class="form-control" id="search" placeholder="Search Products">
-    <div class="input-group-append">
-        <button class="btn btn-success" id="searchbtn">Search</button>
-    </div>
-  </div>
-</div>
-              </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="home.html"><i style="color:black;" class="fa fa-home"> </i> Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-white w3-opacity dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:black;" class="fa fa-hand-point-right"> </i> Categories </a>
-        <div class="dropdown-menu bg-primary w3-animate-opacity" style="border:none">
-        <a class="nav-link dropdown-item" onclick="catElect()">Electronics</a>
-        <a class="nav-link dropdown-item" onclick="catKitchen()">Kitchen</a>
-        <a class="nav-link dropdown-item" onclick="catFas()">Fashion</a>
-        <a class="nav-link dropdown-item" onclick="catOther()">Other</a>
-      </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="signup.html"><i style="color:black;" class="fa fa-plus"> </i> Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"> <i style="color:black;" class="fa fa-users"> </i> About Us </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="terms.html"> <i style="color:black;" class="fa fa-file-contract"> </i> Terms and Conditions </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="report.html"> <i style="color:black;" class="fa fa-exclamation-circle"> </i> Report Abuse </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-               
-               
-           
-           <div class="container w3-border" id="proPage">
-               <div class="container w3-center w3-padding" id="proPageName">
-                   Product name
-               </div><div id="demo2" style="z-index:1;" class="carousel slide container" data-ride="carousel" data-interval="2000">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
-  <!-- Indicators -->
- <!--<ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>-->
-
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active" id="proPageImg1">
-        
-      
-    </div>
-    <div class="carousel-item" id="proPageImg2">
-  
-      
-    </div>
-    <div class="carousel-item" id="proPageImg3">
-  
-      
-    </div>
-    <div class="carousel-item" id="proPageImg4">
-  
-      
-    </div>
-    <div class="carousel-item" id="proPageImg5">
-  
-      
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo2" data-slide="prev">
-    <span style="z-index:3;" class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo2" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
-</div>
-             <!--  <div class="container w3-center" id="proPageImg">
-                   IMG url
-               </div>-->
-               <div class="container" id="proPagePrice">
-                   Price:
-               </div>
-               <div class="container">
-                   Negotiable
-               </div>
-               <div class="container" id="proPageDes">
-                   Description :
-                   
-               </div>
-               <hr>
-               <div class="container" style="font-family:Raleway;">
-                   <h5 style="font-family:Raleway;">Contact Seller</h5>
-                   <p id="proSellerName">
-                       Seller:
-                   </p>
-                   <p id="proPageNum"><i class="fab fa-whatsapp text-success"></i>  </p>
-                   <p id="proPageEmail">@  </p>
-               </div>
-               <div class="container" id="proPageSellerLoc">
-                   Seller Location:
-               </div><hr>
-               <div class="container">
-                    <button class="btn btn-primary" onclick="goBack()" id="goBack">Go Back</button>
-                   <button class="btn btn-primary" onclick="goBack2()" id="goBack2">Go Back</button><br>
-               </div><br>
-           </div>
-        
-        <div class="container w3-center" id="searchPage">
-            <h4 id="tops" style="font-family:Raleway;" class="container w3-center">Result for </h4>
-            <br>
-            
-            <div class='row w3-center' id='sp'>
-                
-            </div>
-            <div class="container">
-                <button class="btn btn-primary" onclick="goBack()">Back</button>
-            </div>
-            </div>
-            
-            <div id="catPage" class="container w3-center">
-                <h4 style="font-family:Raleway;"id="catPageName"></h4>
-                <br>
-                <div id="catPageContent" class="container row"></div>
-            </div>
-            
-        <div class="container-fluid w3-center" style="z-index:3;" id="homePage">
-            
-            
-            
-            
-            <div class="container">
-                <marquee><p>Welcome to LaunMart <i class="fa fa-shopping-cart"></i>....  Happy Festive Season From LaunMart  <img style="height:80px;" src="https://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif" alt="Merry Christmas"></p></marquee>
-            </div>
-            
-            
-            
-            
-            
-            
-            <h3 style="font-family:Raleway;">Flash Sales for you</h3>
-            <br>
-            
-            
-            <div id="demo" style="z-index:1;" class="carousel slide container" data-ride="carousel" data-interval="2000">
-
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Raleway;">Great Deals just for you</h4>
-  </div>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTywlfKWkurnonJ8JMjeywSczsyzSXOqTYCqw&usqp=CAU" class="w3-opacity" alt="Great deals">
-      
-    </div>
-    <div class="carousel-item">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQSnzbuvtiXiTWL9aEOx1S_aefoaV-u9zQdIw&usqp=CAU" class="w3-opacity" alt="Exclusive offers">
-      <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Raleway;">Exclusive Offers coming your way</h4>
-  </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR8vEk0tkIMuqols2_03poB09z4CyAqa5Pm1Q&usqp=CAU" class="w3-opacity" alt="Cheap prices">
-      <div class="carousel-caption">
-    <h4 style="color:black; z-index:0; font-family:Raleway;">Cheap and Affordable prices</h4>
-  </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span style="z-index:3;" class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
-</div><br>
-<h3 style="font-family:Raleway;">Categories</h3>
-            <br>
-            <h4 id="topCat" onclick="catElect()" style="font-family:Raleway;">Electronics<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
-            <br>
-            
-            <div class='row cat container' id='electSection'>
-                
-            </div>
-            <br><br>
-            
-            <h4 onclick="catKitchen()" style="font-family:Raleway;">Kitchen<span class="w3-right" onclick="catKitchen()"><i class="fa fa-arrow-right"></i></span></h4>
-            <br>
-            
-            <div class='row cat container' id='kitchenSection'>
-                
-            </div>
-            <br><br>
-            <h4 onclick="catFas()" style="font-family:Raleway;">Fashion<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
-            <br>
-            
-            <div class='row cat container' id='FashionSection'>
-                
-            </div>
-            <br><br>
-            <h4 onclick="catOther()" style="font-family:Raleway;">Other<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
-            <br>
-            
-            <div class='row cat container' id='otherSection'>
-                
-            </div>
-            <br>
-            <div id="nop" class="text-success">
-                
-            </div><hr>
-        
-          
-<div class="pt-4 w3-center">
-    <p>Created By DivsTech</p>
-    <p><a href="terms.html">Terms and conditions apply</a></p>
-</div>
-</div>
-   <!-- <input id="item" placeholder="item">
-    <input id="price" placeholder="price">
-    <input id="pic" placeholder="pic">
-    <input id="cat" placeholder="cat">
-    <button onclick="go()">Enter</button>-->
-
-<script>
-swal({
-    title: "Welcome to LaunMart, please read this terms",
-    text: "-All prices are negotiable with the dealers.\n-Customers are allowed to chat up dealers and transact.\n-Payment before/after services are allowed and there'll be no form of foul play between the dealer and the customer.\n-It takes a product a maximum of 72 hrs to get to a customer  that is to say, a dealer has only 72hrs to make sure a product gets to the buyer, If this date is exceeded, pls contact us via our Email or WhatsApp with your name, the dealer's name, the product paid for and a proof of payment.\n-Dealers can only advertise on launmart if they've signed a contract with us.\n-We strongly advise that you sign up with us so as to get updates on changes related to the site and ongoing prize pools.",
-    icon: "info"
-})
-var firebaseConfig = {
-    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
-    authDomain: "launmart-14731.firebaseapp.com",
-    databaseURL: "https://launmart-14731.firebaseio.com",
-    projectId: "launmart-14731",
-    storageBucket: "launmart-14731.appspot.com",
-    messagingSenderId: "951616527792",
-    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
-  };
-  firebase.initializeApp(firebaseConfig);
-firebase.database().ref("No_of_pro").on("child_added", function(snapshot){
-    nop = snapshot.val()
-    document.getElementById("nop").innerHTML =nop + " Product(s) has been uploaded to Launmart."
-})
-  const db = firebase.firestore()
-  db.settings({timeStampsInSnapshot:true});
-  
-  
-  n = 0
-  console.log(n)
-  var setI = setInterval(() => {
-      n = n+1
-      if(n == 10) {
-          clearInterval(setI)
-          console.log(n)
-          
-      document.getElementById("load").innerHTML = "An error occurred while retrieving data. Please refresh the page."
-      }
-  }, 1000)
-  
-  
-  db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          console.log(doc.data())
-          renderDoc(doc)
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-        clearInterval(setI)
-      })
-  })
-  
-  function catElect() {
-     document.querySelector("#catPageContent").innerHTML = ""
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      document.getElementById("searchPage").style.display = "none";
-          db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          var catPage = document.querySelector("#catPage");
-          var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Electronics"
-      if (doc.data().proCat == "Electronics") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          catPageContent.innerHTML += elect
-          catPage.style.display = "block"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      }
-      })
-          })
-  }
-  
-  
-  
-  function catKitchen() {
-     document.querySelector("#catPageContent").innerHTML = ""
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      document.getElementById("searchPage").style.display = "none";
-          db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          var catPage = document.querySelector("#catPage");
-          var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Kitchen"
-      if (doc.data().proCat == "Kitchen") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          catPageContent.innerHTML += elect
-          catPage.style.display = "block"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      }
-      })
-          })
-  }
-  
-  
-  
-  function catFas() {
-     document.querySelector("#catPageContent").innerHTML = ""
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      document.getElementById("searchPage").style.display = "none";
-          db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          var catPage = document.querySelector("#catPage");
-          var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Fashion"
-      if (doc.data().proCat == "Fashion") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          catPageContent.innerHTML += elect
-          catPage.style.display = "block"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      }
-      })
-          })
-  }
-  
-  
-  
-  function catOther() {
-     document.querySelector("#catPageContent").innerHTML = ""
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      document.getElementById("searchPage").style.display = "none";
-          db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          var catPage = document.querySelector("#catPage");
-          var catPageContent = document.querySelector("#catPageContent")
-          document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Other"
-      if (doc.data().proCat == "Other") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          catPageContent.innerHTML += elect
-          catPage.style.display = "block"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      }
-      })
-          })
-  }
-  
-  
-  
-  document.querySelector("#searchbtn").addEventListener("click", () => {
-      document.querySelector("#sp").innerHTML = ""
-  document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      searchItem = document.querySelector("#search").value
-      if (searchItem != "") {
-          db.collection("products").get().then((snapshot) => {
-      snapshot.docs.forEach(doc => {
-          if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
-              document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
-      var sp = document.querySelector("#sp");
-     // sp.innerHTML = ""
-          elect = ""
-          
-          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          sp.innerHTML += elect
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      document.getElementById("searchPage").style.display = "block";
-      
-          document.getElementById("catPage").style.display = "none"
-          }
-          else {
-              document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
-      
-     // var sp = document.querySelector("#sp");
-          //sp.innerHTML = "No Item Found"
-      document.getElementById("searchPage").style.display = "block";
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("homePage").style.display = "none"
-          }
-      })
-  })
-  
-      }
-      else {
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      }
-      //console.log(searchItem)
-  })
-  
-  
-  function renderDoc(doc) {
-      var electS = document.querySelector("#electSection");
-      var kitchenS = document.querySelector("#kitchenSection");
-      var FashionS = document.querySelector("#FashionSection");
-      var OtherS = document.querySelector("#otherSection");
-      if (doc.data().proCat == "Electronics") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          electS.innerHTML += elect
-      }
-     
-     if (doc.data().proCat == "Kitchen") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          kitchenS.innerHTML += elect
-      }
-      
-     if (doc.data().proCat == "Fashion") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          FashionS.innerHTML += elect
-      }
-     if (doc.data().proCat == "Other") {
-         
-          
-          elect = ""
-          
-          elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-              elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-              elect += "<br>"
-              elect += doc.data().proName
-              elect += "<br>"
-              
-          
-          elect += "</div>"
-          OtherS.innerHTML += elect
-      }
-  }
-  $('.nav-link').on('click',function() {
-  $('.navbar-collapse').collapse('hide');
-});
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 
 
-  function tap(self) {
-      document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      let id = self.getAttribute('data-id');
-      console.log(id)
-      db.doc("products/" + id).get().then((doc) => {
-          //console.log(doc.data().proCat)
-          document.getElementById("proPageName").innerHTML = doc.data().proName
-          document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
-          document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
-          document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
-          document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
-          document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
-          document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
-            document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
-          document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-          num = 'https://wa.me/+234' + doc.data().proNum
-          document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
-          document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
-          document.getElementById("proPage").style.display = "block"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-          document.getElementById("searchPage").style.display = "none"
-          document.getElementById("catPage").style.display = "none"
-          
-          document.getElementById("goBack2").style.display = "none"
-          document.getElementById("goBack").style.display = "block"
-  
-      })
-  }
-  
-  function tap2(self) {
-      document.getElementById("overlay").style.display = "block"
-      document.getElementById("load").style.display = "block"
-      let id = self.getAttribute('data-id');
-      console.log(id)
-      db.doc("products/" + id).get().then((doc) => {
-          //console.log(doc.data().proCat)
-          document.getElementById("proPageName").innerHTML = doc.data().proName
-          document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
-          document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
-          document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
-          document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
-          document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
-          document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
-            document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
-          document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-          num = 'https://wa.me/+234' + doc.data().proNum
-          document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
-          document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-          document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
-          document.getElementById("proPage").style.display = "block"
-          document.getElementById("homePage").style.display = "none"
-          document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-          document.getElementById("searchPage").style.display = "none"
-          document.getElementById("catPage").style.display = "none"
-          document.getElementById("goBack").style.display = "none"
-          document.getElementById("goBack2").style.display = "block"
-          
-  
-      })
-  }
-  
-  
-  function goBack() {
-      document.getElementById("homePage").style.display = "block"
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("searchPage").style.display = "none"
-          document.getElementById("catPage").style.display = "none"
-  }
-  
-  function goBack2() {
-      document.getElementById("homePage").style.display = "none"
-          document.getElementById("proPage").style.display = "none"
-          document.getElementById("searchPage").style.display = "none"
-          document.getElementById("catPage").style.display = "block"
-  }
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  // Your web app's Firebase configuration
- /* try {
-  var firebaseConfig = {
-    apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
-    authDomain: "launmart-14731.firebaseapp.com",
-    databaseURL: "https://launmart-14731.firebaseio.com",
-    projectId: "launmart-14731",
-    storageBucket: "launmart-14731.appspot.com",
-    messagingSenderId: "951616527792",
-    appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
-  };
-  }
-  catch (error){
-      document.getElementById("body").style = "none"
-      document.getElementById("ta").style = "block"
-  
-  }
-  // Initialize Firebase
-  try {
-  firebase.initializeApp(firebaseConfig);
-  }
-  catch (error){
-      document.getElementById("body").style = "none"
-      document.getElementById("ta").style = "block"
-  
-  }
-  tabtn = document.getElementById("tabtn")
-  tabtn.addEventListener("click", () => {
-      window.location.href = "home.html"
-  })
-  try {
-  firebase.database().ref("Items").on("child_added", function(snapshot){
-      item = snapshot.val().item
-      price = snapshot.val().price
-      categ = snapshot.val().cat
-      img = snapshot.val().pic
-      console.log(item+price+categ+img)
-      document.getElementById("overlay").style.display = "none"
-      document.getElementById("load").style.display = "none"
-      if (categ == "Electronics") {
-          document.getElementById("topCat"). innerText = "Electronics"
-          elect = ""
-          
-          elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
-              elect += "<img class='catImg' src='" + img + " '";
-              elect += "<br>"
-              elect += item
-              elect += "<br>"
-              elect += price
-          
-          elect += "</div>"
-          document.getElementById("electSection").innerHTML += elect
-      }
-      
-      if (categ == "Kitchen") {
-          
-          elect = ""
-          
-          elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>"
-              elect += "<img class='catImg' src='" + img + " '";
-              elect += "<br>"
-              elect += item
-              elect += "<br>"
-              elect += price
-          
-          elect += "</div>"
-          document.getElementById("kitchenSection").innerHTML += elect
-      }
-  })
-  }
-  catch (err){
-      document.getElementById("body").style = "none"
-      document.getElementById("ta").style = "block"
-  
-  }*/
-  
-  
-  
-  
-  
-  
- /* function go() {
-      item = document.getElementById("item").value
-      price = document.getElementById("price").value
-      cat = document.getElementById("cat").value
-      pic = document.getElementById("pic").value
-      firebase.database().ref("Items").push().set({
-          item: item,
-          price: price,
-          cat: cat,
-          pic: pic
-      }).then(() => {
-          console.log("sent")
-      }).catch(() => {
-          console.log("error")
-      })
-  }*/
-</script>
-        
-    </body>
 
-</html>
- 
+
+
+	<style>
+		a: hover {
+			color: white;
+			text-decoration: none;
+		}
+		img {
+			width: 100%;
+			height: 500px;
+		}
+		.cat {
+			max-height: 640px;
+			overflow: hidden;
+
+		}
+		#searchdiv {
+			display: none;
+		}
+		nav {
+			border-bottom-style: solid;
+			border-bottom-color: orange;
+			border-bottom-width: 4px;
+		}
+		#catPageName, h3, h4 {
+			font-weight: bolder;
+		}
+		#load, #overlay {
+			display: block;
+		}
+
+		#load {
+			top: 800px;
+			left: 150px;
+		}
+
+		.catImg {
+			height: 230px;
+		}
+
+		li {
+			list-style-type: none;
+
+		}
+
+		.lli {
+			list-style-type: none;
+			font-size: 20px;
+			display: inline;
+			padding-right: 30px;
+			padding-bottom: 20px;
+		}
+		.ul {
+			float: right;
+			margin-top: -50px;
+			display: inline;
+			padding-bottom: 20px;
+
+		}
+		nav {
+			font-weight: bolder;
+		}
+		#head {
+			text-align: left;
+			padding-top: 20px;
+			font-size: 20px;
+
+		}
+		/*	hr {
+			margin-left: -20px;
+			margin-right: -20px;
+			border-color: blue;
+		}*/
+		#proPage, #searchPage {
+			display: none;
+		}
+		#showcase {
+			color: white;
+			background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcjhxCcDVocI7cZhEZOJdOo9BJBiz_vAuHSA&usqp=CAU') no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		#show-case h3 {
+			font-size: 35px;
+			margin-top: 100px;
+		}
+
+		#show-case {
+			backdrop-filter: opacity(.7);
+			backdrop-filter: brightness(.2);
+			background-color: rgba(255,255,255,0.1);
+			min-height: 400px;
+			padding: 40px;
+			margin-top: -20px;
+			text-align: center;
+		}
+
+@media(max-width: 768px) {
+			.cat {
+				max-height: 320px;
+			}
+			img {
+				height: 250px;
+			}
+			.catImg {
+				height: 90px;
+			}
+			.lli {
+				font-size: 15px;
+			}
+			.ul {
+				float: none;
+				display: inline;
+				text-align: left;
+			}
+			h4 {
+					font-weight:lighter;
+					font-size:15px;
+			}
+			.why, #footer{
+				font-size: 14px;
+			}
+		  
+			nav {
+				text-align: center;
+				display: block;
+			}
+			#head {
+				text-align: center;
+				display: block;
+				padding-top: 0px;
+			}
+			#load {
+				top: 300px;
+				left: 0px;
+			}
+			#show-case h3 {
+				font-size: 30px;
+			}
+		}
+	</style>
+</head>
+
+
+
+
+
+<body class="bg-white" style="font-family:Raleway;" id="body">
+
+
+	<div class="w3-overlay w3-animate-opacity" style="cursor:pointer; z-index:5;" id="overlay"></div>
+
+	<div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
+		<span class="spinner-grow spin text-white">
+		</span><br><br>
+		LaunMart <i class="fa fa-shopping-cart"></i>
+	</div>
+
+
+
+	<div id="home">
+
+		<!-- <header class="jumbotron bg-primary text-white">
+																																																																										               <h3 style="font-family:Raleway; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
+																																																																										               </h3>
+																																																																										               <p>Welcome Guest <span class="w3-right">Login</span></p>
+																																																																										            </header>-->
+
+
+
+		<nav class="w3-padding bg-secondary sticky-top text-white" style="z-index:4; margin-top:-30px;">
+			<!-- Brand -->
+			<h3 class="" id="head" style="font-family:Raleway;"><span style="color:orange;">Laun</span>Mart <i class="fa fa-shopping-cart"></i></h3>
+			<br>
+			<ul class="ul" id="navul">
+				<li id="oli1" class="w3-animate-opacity lli" style="color: orange;">
+					<a class="" href="home.html"><i style="color:orange;" class="fa fa-home"> </i> Home</a>
+				</li>
+				<li id="oli2" class="w3-animate-opacity lli">
+					<span class="text-black dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i style="color:white;" class="fa fa-hand-point-right"> </i> Categories </span>
+					<div class="dropdown-menu bg-secondary w3-animate-opacity text-white" style="border:none">
+						<a class="text-white dropdown-item" onclick="catElect()">Electronics</a>
+						<a class="text-white dropdown-item" onclick="catKitchen()">Kitchen</a>
+						<a class="text-white dropdown-item" onclick="catFas()">Fashion</a>
+						<a class="text-white dropdown-item" onclick="catOther()">Other</a>
+					</div>
+				</li>
+			
+				
+				<li class="oli w3-animate-opacity lli">
+					<span onclick="searchbtnshow()"><i class="fa fa-search"></i> Search</span>
+				</li>
+				<li id="searchdiv" class="w3-animate-right lli">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button class="btn btn-success" id="searchbtn">
+								<span><i class="fa fa-search"></i></span>
+							</button>
+						</div>
+						<input type="search" class="form-control" id="search" placeholder="Search Products">
+						<div class="input-group-append">
+							<button class="btn btn-warning" id="searchbtnhide" onclick="searchbtnhide()"><i class="fa fa-arrow-left"></i></button>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+
+
+			<script>
+				function searchbtnshow() {
+					document.getElementById("searchdiv").style.display = "inline"
+					document.querySelector("#oli1").style.display = "none"
+					document.querySelector("#oli2").style.display = "none"
+					document.querySelector("#oli3").style.display = "none"
+					document.querySelector(".oli").style.display = "none"
+				}
+
+				function searchbtnhide() {
+					document.getElementById("searchdiv").style.display = "none"
+					document.querySelector("#oli1").style.display = "inline"
+					document.querySelector("#oli2").style.display = "inline"
+					
+					document.querySelector("#oli3").style.display = "inline"
+					document.querySelector(".oli").style.display = "inline"
+				}
+			</script>
+
+		</nav>
+
+
+
+
+
+
+
+		<div class="container w3-border" id="proPage">
+			<div class="container w3-center w3-padding" id="proPageName">
+				Product name
+			</div>
+			<div id="demo2" style="z-index:1;" class="carousel slide container" data-ride="carousel" data-interval="2000">
+
+				<!-- Indicators -->
+				<!--<ul class="carousel-indicators">
+																																																																																																																																																				    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
+																																																																																																																																																				    <li data-target="#demo" data-slide-to="1"></li>
+																																																																																																																																																				    <li data-target="#demo" data-slide-to="2"></li>
+																																																																																																																																																				  </ul>-->
+
+				<!-- The slideshow -->
+				<div class="carousel-inner">
+					<div class="carousel-item active" id="proPageImg1">
+
+
+					</div>
+					<div class="carousel-item" id="proPageImg2">
+
+
+					</div>
+					<div class="carousel-item" id="proPageImg3">
+
+
+					</div>
+					<div class="carousel-item" id="proPageImg4">
+
+
+					</div>
+					<div class="carousel-item" id="proPageImg5">
+
+
+					</div>
+				</div>
+
+				<!-- Left and right controls -->
+				<a class="carousel-control-prev" href="#demo2" data-slide="prev">
+					<span style="z-index:3;" class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#demo2" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+
+			</div>
+			<!--  <div class="container w3-center" id="proPageImg">
+																																																																																																															                   IMG url
+																																																																																																															               </div>-->
+			<div class="container" id="proPagePrice">
+				Price:
+			</div><br>
+			<div class="container">
+				Negotiable
+			</div>
+			<div class="container" id="proPageDes">
+				Description :
+
+			</div>
+			<hr>
+			<div class="container" style="font-family:Raleway;">
+				<h5 style="font-family:Raleway;">Contact Seller</h5>
+				<p id="proSellerName">
+					Seller:
+				</p>
+				<p id="proPageNum">
+					<i class="fab fa-whatsapp text-success"></i>
+				</p>
+				<p id="proPageEmail">
+					@
+				</p>
+			</div>
+			<div class="container" id="proPageSellerLoc">
+				Seller Location:
+			</div>
+			<hr>
+			<div class="container">
+				<button class="btn btn-primary" onclick="goBack()" id="goBack">Go Back</button>
+				<button class="btn btn-primary" onclick="goBack2()" id="goBack2">Go Back</button><br>
+			</div>
+			<br>
+		</div>
+
+		<div class="container w3-center" id="searchPage">
+			<h4 id="tops" style="font-family:Raleway;" class="container w3-center">Result for </h4>
+			<br>
+
+			<div class='row w3-center' id='sp'>
+
+			</div>
+			<div class="container">
+				<button class="btn btn-primary" onclick="goBack()">Back</button>
+			</div>
+		</div>
+
+		<div id="catPage" class="container w3-center">
+			<h4 style="font-family:Raleway;"id="catPageName"></h4>
+			<br>
+			<div id="catPageContent" class="container row"></div>
+		</div>
+
+		<div class=" w3-center" style="z-index:3;" id="homePage">
+
+
+
+			<!--
+																																																																								<div class="container">
+																																																																									<marquee><p>
+																																																																										Welcome to LaunMart <i class="fa fa-shopping-cart"></i>....  Happy Festive Season From LaunMart  <img style="height:80px;" src="https://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif" alt="Merry Christmas">
+																																																																									</p>
+																																																																									</marquee>
+																																																																								</div>-->
+			-->
+
+
+
+
+
+			
+
+
+
+
+
+
+
+			<div style="margin-top:-60px;" id="showcase" style="font-family:Raleway;">
+				<div id="show-case">
+					<div class="" id="">
+						<h3 style="font-family:Raleway; color:white;"><span style="color:orange;">Laun</span>Mart <i class="fa fa-shopping-cart"></i></h3>
+						<p style="font-size:30px;">
+							Creating the bridge between sellers and buyers
+						</p>
+					</div>
+					<!--      <img class="w3-opacity" style="width:100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR8vEk0tkIMuqols2_03poB09z4CyAqa5Pm1Q&usqp=CAU">-->
+				</div>
+			</div>
+
+
+			<div class="bg-secondary w3-padding text-white" style="height:140px;">
+				<h4 style="font-family:Raleway; text-align:center;">Why Choose <span style="color:orange;">Laun</span>Mart <i class="fa fa-shopping-cart"></i></h4>
+
+				<br>
+
+				<div class="row">
+					<span class="col-4 why" style="color:orange; text-align:center;">
+						<i class="fa fa-shopping-cart"></i>
+						<br>
+						<span>Best Sales</span>
+					</span>
+
+					<span class="col-4 why" style="color:orange; text-align:center;">
+						<i class="fa fa-gift"></i>
+						<br>
+						<span>Quality Products</span>
+					</span>
+
+					<span class="col-4 why" style="color:orange; text-align:center;">
+						<i class="fa fa-shipping-fast"></i>
+						<br>
+						<span>Fast Delivery</span>
+					</span>
+
+				</div>
+			</div>
+
+
+
+
+
+			<br>
+			<h3 style="font-family:Raleway;">Categories</h3>
+			<br>
+			<h4 id="topCat" onclick="catElect()" style="font-family:Raleway;">Electronics<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<br>
+
+			<div class='row cat container' id='electSection'>
+
+			</div>
+			<br><br>
+
+			<h4 onclick="catKitchen()" style="font-family:Raleway;">Kitchen<span class="w3-right" onclick="catKitchen()"><i class="fa fa-arrow-right"></i></span></h4>
+			<br>
+
+			<div class='row cat container' id='kitchenSection'>
+
+			</div>
+			<br><br>
+			<h4 onclick="catFas()" style="font-family:Raleway;">Fashion<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<br>
+
+			<div class='row cat container' id='FashionSection'>
+
+			</div>
+			<br><br>
+			<h4 onclick="catOther()" style="font-family:Raleway;">Other<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<br>
+
+			<div class='row cat container' id='otherSection'>
+
+			</div>
+			<br>
+			<div id="nop" class="text-success">
+
+			</div>
+
+
+
+			<div class="w3-padding text-white w3-center bg-secondary" style="border-top-style:solid; border-top-color:orange; font-weight:bolder; border-top-width:4px;" id="footer">
+				<br>
+				<div class="row" style="text-align:center; color:orange;">
+					<span class="col-6 w3-center" style="text-align:center; color:orange;">
+						<a class="" href="login.html"><i class="fa fa-sign-in-alt"> </i> Sign In</a>
+					</span>
+					<span class="col-6 w3-center" style="text-align:center; float:right; color:orange;"">
+						<a class="" href="#"> <i class="fa fa-users"> </i> About Us </a>
+						</span>
+						</div>
+						<br>
+						<div class="row">
+						<span class="col-6" style="text-align:center; color:orange;">
+						<a class="" href="terms.html"> <i class="fa fa-file-contract"> </i>
+						Terms and Conditions </a>
+						</span>
+						<span class="col-6" style="text-align:center; color:orange;">
+						<a class="" href="report.html"> <i class="fa fa-exclamation-circle"> </i> Report Abuse </a>
+						</span>
+						</div>
+						<br><br>
+						<p>
+						<a href="terms.html" style="color:orange;">Terms and conditions apply</a>
+						</p>
+						<p>
+						Created By <a style="color:orange;" href="https://divstech.ml">DivsTech</a> | All Rights Reserved
+						</p>
+						</div>
+						</div>
+						<!-- <input id="item" placeholder="item">
+						<input id="price" placeholder="price">
+						<input id="pic" placeholder="pic">
+						<input id="cat" placeholder="cat">
+						<button onclick="go()">Enter</button>-->
+
+
+						<script>
+						swal({
+						title: "Welcome to LaunMart, please read this terms",
+						text: "-All prices are negotiable with the dealers.\n-Customers are allowed to chat up dealers and transact.\n-Payment before/after services are allowed and there'll be no form of foul play between the dealer and the customer.\n-It takes a product a maximum of 72 hrs to get to a customer  that is to say, a dealer has only 72hrs to make sure a product gets to the buyer, If this date is exceeded, pls contact us via our Email or WhatsApp with your name, the dealer's name, the product paid for and a proof of payment.\n-Dealers can only advertise on launmart if they've signed a contract with us.\n-We strongly advise that you sign up with us so as to get updates on changes related to the site and ongoing prize pools.",
+						icon: "info"
+						})
+						var firebaseConfig = {
+						apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+						authDomain: "launmart-14731.firebaseapp.com",
+						databaseURL: "https://launmart-14731.firebaseio.com",
+						projectId: "launmart-14731",
+						storageBucket: "launmart-14731.appspot.com",
+						messagingSenderId: "951616527792",
+						appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+						};
+						firebase.initializeApp(firebaseConfig);
+						firebase.database().ref("No_of_pro").on("child_added", function(snapshot) {
+						nop = snapshot.val()
+						document.getElementById("nop").innerHTML = nop + " Product(s) has been uploaded to Launmart."
+						})
+						const db = firebase.firestore()
+						db.settings({
+						timeStampsInSnapshot: true
+						});
+
+
+						/* n = 0
+						console.log(n)
+						var setI = setInterval(() => {
+						n = n+1
+						if(n == 10) {
+						clearInterval(setI)
+						console.log(n)
+						document.getElementById("load").innerHTML = "An error occurred while retrieving data. Please refresh the page."
+						}
+						}, 1000)*/
+
+
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						console.log(doc.data())
+						renderDoc(doc)
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						//clearInterval(setI)
+						})
+						})
+
+						function catElect() {
+						document.querySelector("#catPageContent").innerHTML = ""
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						document.getElementById("searchPage").style.display = "none";
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						var catPage = document.querySelector("#catPage");
+						var catPageContent = document.querySelector("#catPageContent")
+						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Electronics"
+						if (doc.data().proCat == "Electronics") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						catPageContent.innerHTML += elect
+						catPage.style.display = "block"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						}
+						})
+						})
+						}
+
+
+
+						function catKitchen() {
+						document.querySelector("#catPageContent").innerHTML = ""
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						document.getElementById("searchPage").style.display = "none";
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						var catPage = document.querySelector("#catPage");
+						var catPageContent = document.querySelector("#catPageContent")
+						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Kitchen"
+						if (doc.data().proCat == "Kitchen") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						catPageContent.innerHTML += elect
+						catPage.style.display = "block"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						}
+						})
+						})
+						}
+
+
+
+						function catFas() {
+						document.querySelector("#catPageContent").innerHTML = ""
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						document.getElementById("searchPage").style.display = "none";
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						var catPage = document.querySelector("#catPage");
+						var catPageContent = document.querySelector("#catPageContent")
+						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Fashion"
+						if (doc.data().proCat == "Fashion") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						catPageContent.innerHTML += elect
+						catPage.style.display = "block"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						}
+						})
+						})
+						}
+
+
+
+						function catOther() {
+						document.querySelector("#catPageContent").innerHTML = ""
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						document.getElementById("searchPage").style.display = "none";
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						var catPage = document.querySelector("#catPage");
+						var catPageContent = document.querySelector("#catPageContent")
+						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Other"
+						if (doc.data().proCat == "Other") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						catPageContent.innerHTML += elect
+						catPage.style.display = "block"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						}
+						})
+						})
+						}
+
+
+
+						document.querySelector("#searchbtn").addEventListener("click", () => {
+						document.querySelector("#sp").innerHTML = ""
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						searchItem = document.querySelector("#search").value
+						if (searchItem != "") {
+						db.collection("products").get().then((snapshot) => {
+						snapshot.docs.forEach(doc => {
+						if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
+						document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+						var sp = document.querySelector("#sp");
+						// sp.innerHTML = ""
+						elect = ""
+
+						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						sp.innerHTML += elect
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						document.getElementById("searchPage").style.display = "block";
+
+						document.getElementById("catPage").style.display = "none"
+						} else {
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+
+						// var sp = document.querySelector("#sp");
+						//sp.innerHTML = "No Item Found"
+						document.getElementById("searchPage").style.display = "block";
+						document.getElementById("proPage").style.display = "none"
+						document.getElementById("homePage").style.display = "none"
+						}
+						})
+						})
+
+						} else {
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						}
+						//console.log(searchItem)
+						})
+
+
+						function renderDoc(doc) {
+						var electS = document.querySelector("#electSection");
+						var kitchenS = document.querySelector("#kitchenSection");
+						var FashionS = document.querySelector("#FashionSection");
+						var OtherS = document.querySelector("#otherSection");
+						if (doc.data().proCat == "Electronics") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						electS.innerHTML += elect
+						}
+
+						if (doc.data().proCat == "Kitchen") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						kitchenS.innerHTML += elect
+						}
+
+						if (doc.data().proCat == "Fashion") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						FashionS.innerHTML += elect
+						}
+						if (doc.data().proCat == "Other") {
+
+
+						elect = ""
+
+						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+						elect += "<br>"
+						elect += doc.data().proName
+						elect += "<br>"
+
+
+						elect += "</div>"
+						OtherS.innerHTML += elect
+						}
+						}
+						$('.nav-link').on('click', function() {
+						$('.navbar-collapse').collapse('hide');
+						});
+
+
+						function tap(self) {
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						let id = self.getAttribute('data-id');
+						console.log(id)
+						db.doc("products/" + id).get().then((doc) => {
+						//console.log(doc.data().proCat)
+						document.getElementById("proPageName").innerHTML = doc.data().proName
+						document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+						document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+						document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
+						document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
+						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
+						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+						document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
+					num = 'https://wa.me/+234' + doc.data().proNum
+					document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
+						document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
+						document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+						document.getElementById("proPage").style.display = "block"
+						document.getElementById("homePage").style.display = "none"
+						document.getElementById("overlay").style.display = "none"
+						document.getElementById("load").style.display = "none"
+						document.getElementById("searchPage").style.display = "none"
+						document.getElementById("catPage").style.display = "none"
+
+						document.getElementById("goBack2").style.display = "none"
+						document.getElementById("goBack").style.display = "block"
+
+						})
+						}
+
+						function tap2(self) {
+						document.getElementById("overlay").style.display = "block"
+						document.getElementById("load").style.display = "block"
+						let id = self.getAttribute('data-id');
+						console.log(id)
+						db.doc("products/" + id).get().then((doc) => {
+						//console.log(doc.data().proCat)
+						document.getElementById("proPageName").innerHTML = doc.data().proName
+						document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+						document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+						document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
+						document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
+						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
+						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+						document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
+							num = 'https://wa.me/+234' + doc.data().proNum
+							document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
+							document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
+							document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+							document.getElementById("proPage").style.display = "block"
+							document.getElementById("homePage").style.display = "none"
+							document.getElementById("overlay").style.display = "none"
+							document.getElementById("load").style.display = "none"
+							document.getElementById("searchPage").style.display = "none"
+							document.getElementById("catPage").style.display = "none"
+							document.getElementById("goBack").style.display = "none"
+							document.getElementById("goBack2").style.display = "block"
+
+
+							})
+							}
+
+
+							function goBack() {
+							document.getElementById("homePage").style.display = "block"
+							document.getElementById("proPage").style.display = "none"
+							document.getElementById("searchPage").style.display = "none"
+							document.getElementById("catPage").style.display = "none"
+							}
+
+							function goBack2() {
+							document.getElementById("homePage").style.display = "none"
+							document.getElementById("proPage").style.display = "none"
+							document.getElementById("searchPage").style.display = "none"
+							document.getElementById("catPage").style.display = "block"
+							}
+
+							// Your web app's Firebase configuration
+							/* try {
+							var firebaseConfig={
+							apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
+							authDomain: "launmart-14731.firebaseapp.com",
+							databaseURL: "https://launmart-14731.firebaseio.com",
+							projectId: "launmart-14731",
+							storageBucket: "launmart-14731.appspot.com",
+							messagingSenderId: "951616527792",
+							appId: "1:951616527792:web:1dc272e89dc5b1b8a98a75"
+							};
+							}
+							catch (error){
+							document.getElementById("body").style="none"
+							document.getElementById("ta").style="block"
+							}
+							// Initialize Firebase
+							try {
+							firebase.initializeApp(firebaseConfig);
+							}
+							catch (error){
+							document.getElementById("body").style="none"
+							document.getElementById("ta").style="block"
+							}
+							tabtn=document.getElementById("tabtn")
+							tabtn.addEventListener("click", ()=> {
+							window.location.href = "home.html"
+							})
+							try {
+							firebase.database().ref("Items").on("child_added", function(snapshot){
+							item = snapshot.val().item
+							price = snapshot.val().price
+							categ = snapshot.val().cat
+							img = snapshot.val().pic
+							console.log(item+price+categ+img)
+							document.getElementById("overlay").style.display = "none"
+							document.getElementById("load").style.display = "none"
+							if (categ == "Electronics") {
+							document.getElementById("topCat"). innerText = "Electronics"
+							elect = ""
+							elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>
+								"
+								elect += "<img class='catImg' src='" + img + " '";
+								elect += "<br>"
+								elect += item
+								elect += "<br>"
+								elect += price
+								elect += "
+							</div>
+							"
+							document.getElementById("electSection").innerHTML += elect
+							}
+							if (categ == "Kitchen") {
+							elect = ""
+							elect += "<div class='col-4 w3-margin-bottom pt-2 w3-border'>
+								"
+								elect += "<img class='catImg' src='" + img + " '";
+								elect += "<br>"
+								elect += item
+								elect += "<br>"
+								elect += price
+								elect += "
+							</div>
+							"
+							document.getElementById("kitchenSection").innerHTML += elect
+							}
+							})
+							}
+							catch (err){
+							document.getElementById("body").style = "none"
+							document.getElementById("ta").style = "block"
+							}*/
+
+
+
+
+
+
+							/* function go() {
+							item = document.getElementById("item").value
+							price = document.getElementById("price").value
+							cat = document.getElementById("cat").value
+							pic = document.getElementById("pic").value
+							firebase.database().ref("Items").push().set({
+							item: item,
+							price: price,
+							cat: cat,
+							pic: pic
+							}).then(() => {
+							console.log("sent")
+							}).catch(() => {
+							console.log("error")
+							})
+							}*/
+						</script>
+
+					</body>
+
+				</html>
