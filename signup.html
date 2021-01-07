@@ -47,7 +47,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
         <style>
-            body {
+        /*    body {
               background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicHgMLGq3FVbKemC0oa5udm_1xNGerYFZRA&usqp=CAU');
         
     -ms-background-size: contain;
@@ -59,8 +59,8 @@
   -webkit-filter: blur(8px);*/
 
     
-
-}
+/*
+}*/
 #body {
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(6px);
@@ -97,7 +97,7 @@
     
     
     
-   <body style="font-family:Raleway;">
+   <body style="font-family:Raleway;" class="bg-secondary">
         
       <div id="body">
         <div class="w3-overlay w3-animate-opacity" style="cursor:pointer; z-index:5;" id="overlay"></div>
@@ -111,13 +111,13 @@
         
         
         
-        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); padding:20px;">
+        <div id="login" class="text-white container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); padding:20px;">
             <header>
-               <h3 class="font" style="font-family:Raleway; font-weight:bolder;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i><hr style="border-color:blue; margin-top:5px;">
+               <h3 class="font text-white" style="font-family:Raleway; font-weight:bolder;"> <span style="color:orange;">Laun</span>Mart   <i class="fa fa-shopping-cart"></i><hr style="border-color:orange; margin-top:5px;">
                </h3>
             </header>
               
-               <h4 class="container font w3-center" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
+               <h4 class="container text-white font w3-center" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
                </h4>
                <br>
             
@@ -155,7 +155,7 @@
                 <div class="row w3-center">
                
                         <div class="col-1 col-md-3"></div>
-                        <div class="col-10 col-md-6 input-group mb-3 font"> By signing up, you agree to our <a href="terms.html"><u>Terms and conditions.</u></a>
+                        <div class="col-10 col-md-6 input-group mb-3 font"> By signing up, you agree to our <a href="terms.html"><u style="color:orange;">Terms and conditions.</u></a>
                
   </div>
   <div class="col-1 col-md-3"></div>   
@@ -168,7 +168,7 @@
                     <button id="signbtn1" class="btn btn-success col-5 font">Sign Up <i class="fa fa-sign-in-alt"></i></button>
 
                     <span class="col-2"></span>
-      <button style="font-size:12px;" id="signbtn2" class="btn btn-warning col-5 font">
+      <button style="font-size:12px; background-color:orange;" id="signbtn2" class="btn col-5 font">
                        LogIn instead
                     </button>
   </div>
