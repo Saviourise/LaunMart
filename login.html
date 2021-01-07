@@ -47,7 +47,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
         <style>
-            body {
+          /*  body{
               background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicHgMLGq3FVbKemC0oa5udm_1xNGerYFZRA&usqp=CAU');
         
     -ms-background-size: contain;
@@ -57,10 +57,10 @@
     backdrop-filter: blur(8px);
     /*filter: blur(8px);
   -webkit-filter: blur(8px);*/
-
+/*
     
 
-}
+}*/
 #body {
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(6px);
@@ -101,7 +101,7 @@
     
     
     
-    <body style="font-family:Raleway;">
+    <body style="font-family:Raleway;" class="bg-secondary">
         
       <div id="body">
         <div class="w3-overlay w3-animate-opacity" style="cursor:pointer; z-index:5;" id="overlay"></div>
@@ -116,12 +116,13 @@
         
         
         <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); padding:20px;">
+           
             <header>
-               <h3 class="font" style="font-family:Raleway; font-weight:bolder;"> LaunMart   <i class="fa fa-shopping-cart w3-right"></i><hr style="border-color:blue; margin-top:5px;">
+               <h3 class="font text-white" style="font-family:Raleway; font-weight:bolder;"> <span style="color:orange;">Laun</span>Mart   <i class="fa fa-shopping-cart"></i><hr style="border-color:orange; margin-top:5px;">
                </h3>
             </header>
               
-               <h4 class="container font w3-center" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
+               <h4 class="container text-white font w3-center" style="font-family:Raleway;"><u>Login <i class="fa fa-user"></i></u>
                </h4>
                <br>
             
@@ -161,7 +162,7 @@
 
                     <button id="btn1" class="btn btn-success col-5 font">Log In <i class="fa fa-sign-in-alt"></i></button>
                     <span class="col-2"></span>
-      <button style="font-size:12px;" id="btn2" class="btn btn-warning font col-5">
+      <button style="font-size:12px; background-color:orange;" id="btn2" class="btn font col-5">
                        Sign Up <i class="fa fa-plus"></i>
                     </button>
   </div>
