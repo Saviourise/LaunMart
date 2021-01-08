@@ -149,7 +149,7 @@
 				max-height: 320px;
 			}
 			img {
-				height: 250px;
+				height: 400px;
 			}
 			.catImg {
 				height: 90px;
@@ -202,7 +202,7 @@
 	<div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed;" id="load">
 		<span class="spinner-grow spin text-white">
 		</span><br><br>
-		LaunMart <i class="fa fa-shopping-cart"></i>
+	<span style="color:orange;">Laun</span>Mart <i class="fa fa-shopping-cart"></i>
 	</div>
 
 
@@ -326,9 +326,14 @@
 				</a>
 
 			</div>
+			<br>
+			<br>
 			<!--  <div class="container w3-center" id="proPageImg">
 																																																																																																															                   IMG url
 																																																																																																															               </div>-->
+																																																																																																															               <div class="container">
+	  <h5 style="font-family:Raleway;" class="text-primary">About product</h5>
+ </div>
 			<div class="container" id="proPagePrice">
 				Price:
 			</div><br>
@@ -341,19 +346,32 @@
 			</div>
 			<hr>
 			<div class="container" style="font-family:Raleway;">
-				<h5 style="font-family:Raleway;">Contact Seller</h5>
+				<h5 style="font-family:Raleway;" class="text-primary">About Seller</h5>
 				<p id="proSellerName">
 					Seller:
 				</p>
-				<p id="proPageNum">
-					<i class="fab fa-whatsapp text-success"></i>
-				</p>
-				<p id="proPageEmail">
-					@
-				</p>
-			</div>
-			<div class="container" id="proPageSellerLoc">
+		
+			<div class="" id="proPageSellerLoc">
 				Seller Location:
+			</div>
+			<br>
+			<div class="">
+			<p>Interested in the product?</p>
+			</div>
+			<br>
+			
+			<div class="row" >
+				<button class="col-12 text-white btn btn-success" id="proPageNum">
+				Contact Seller via WhatsApp
+					<i class="fab fa-whatsapp text-white"></i>
+				</button>
+				</div>
+				<br>
+				<div class="row">
+				<button class="col-12 btn btn-secondary" id="proPageEmail">
+			
+			</button>
+			</div>
 			</div>
 			<hr>
 			<div class="container">
@@ -362,6 +380,7 @@
 			</div>
 			<br>
 		</div>
+		
 
 		<div class="container w3-center" id="searchPage">
 			<h4 id="tops" style="font-family:Raleway;" class="container w3-center">Result for </h4>
@@ -561,6 +580,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   }
 });
+
+
 						n = 0
 						console.log(n)
 						var setI = setInterval(() => {
@@ -578,6 +599,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						snapshot.docs.forEach(doc => {
 						console.log(doc.data())
 						renderDoc(doc)
+						
 						document.getElementById("overlay").style.display = "none"
 						document.getElementById("load").style.display = "none"
 						clearInterval(setI)
@@ -585,6 +607,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						})
 
 						function catElect() {
+								
 						document.querySelector("#catPageContent").innerHTML = ""
 						document.getElementById("proPage").style.display = "none"
 						document.getElementById("homePage").style.display = "none"
@@ -868,9 +891,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
 						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
 						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
-						document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-					num = 'https://wa.me/+234' + doc.data().proNum
-					document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
+						
+						mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
+						
+						
+						
+						document.getElementById("proPageEmail").innerHTML = "<a href="+mail+">" + "Contact Seller via Email" + "</a>"
+						
+					num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20in%20one%20of%20your%20products.%20Reply%20me%20let%20us%20negotiate."
+					document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
+					
 						document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
 						document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
 						document.getElementById("proPage").style.display = "block"
@@ -901,9 +931,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
 						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
 						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
-						document.getElementById("proPageEmail").innerHTML = "<a href='mailto:'" + doc.data().proEmail +"'>" + "@: " + doc.data().proEmail + "</a>"
-							num = 'https://wa.me/+234' + doc.data().proNum
-							document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'><i class='fab fa-whatsapp text-success'>" + doc.data().proNum + "</a>"
+						
+						
+						mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
+						
+						
+						
+						
+						document.getElementById("proPageEmail").innerHTML = "<a href="+mail+">" + "Contact Seller via Email" + "</a>"
+						
+					num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20in%20one%20of%20your%20products.%20Reply%20me%20let%20us%20negotiate."
+					document.getElementById("proPageNum").innerHTML = "<a href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
 							document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
 							document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
 							document.getElementById("proPage").style.display = "block"
