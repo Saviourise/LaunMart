@@ -268,7 +268,6 @@
 					document.getElementById("searchdiv").style.display = "none"
 					document.querySelector("#oli1").style.display = "inline"
 					document.querySelector("#oli2").style.display = "inline"
-					
 					document.querySelector(".oli").style.display = "inline"
 				}
 			</script>
@@ -493,7 +492,7 @@
 				<br>
 				<div class="row" style="text-align:center; color:orange;">
 					<span class="col-6 w3-center" style="text-align:center; color:orange;">
-						<a class="" href="login.html"><i class="fa fa-sign-in-alt"> </i> Sign In</a>
+						<a class="" href="login.html"><i class="fa fa-sign-in-alt"> </i> Sign <span id="inout">In</span></a>
 					</span>
 					<span class="col-6 w3-center" style="text-align:center; float:right; color:orange;"">
 						<a class="" href="#"> <i class="fa fa-users"> </i> About Us </a>
@@ -550,8 +549,19 @@
 						timeStampsInSnapshot: true
 						});
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    // No user is signed in.
+    document.getElementById("inout").innerHTML = "Out"
 
-						/* n = 0
+  console.log("j")
+
+
+  }
+});
+						n = 0
 						console.log(n)
 						var setI = setInterval(() => {
 						n = n+1
@@ -560,18 +570,17 @@
 						console.log(n)
 						document.getElementById("load").innerHTML = "An error occurred while retrieving data. Please refresh the page."
 						}
-						}, 1000)*/
+						}, 1000)
 
 
-						document.getElementById("overlay").style.display = "none"
-						document.getElementById("load").style.display = "none"
+						
 						db.collection("products").get().then((snapshot) => {
 						snapshot.docs.forEach(doc => {
 						console.log(doc.data())
 						renderDoc(doc)
 						document.getElementById("overlay").style.display = "none"
 						document.getElementById("load").style.display = "none"
-						//clearInterval(setI)
+						clearInterval(setI)
 						})
 						})
 
