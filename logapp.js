@@ -75,7 +75,7 @@ var logPassword =  document.getElementById("logPassword").value
                 text:"successfully",
                 timer: 2000
             })*/
-        window.location.href = "loghome.html";
+        window.location.href = "home.html";
               overlay.style.display = "none"
               load.style.display = "none"
         }).catch(function(error) {
