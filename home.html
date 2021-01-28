@@ -57,9 +57,15 @@
 			width: 100%;
 			height: 500px;
 		}
+
+		.w3-card {
+			/*margin:10px;*/
+		}
 		.cat {
 			max-height: 640px;
-			overflow: hidden;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			margin: auto;
 
 		}
 		#searchdiv {
@@ -78,14 +84,13 @@
 		}
 
 		#load {
-			top: 800px;
-			left: 150px;
+			top: 300px;
+			left: 120px;
 		}
 
 		.catImg {
 			height: 230px;
 		}
-
 		li {
 			list-style-type: none;
 
@@ -143,6 +148,17 @@
 			margin-top: -20px;
 			text-align: center;
 		}
+
+		#SimilarProPage, #SimilarSellerProPage {
+			white-space: nowrap;
+			overflow-x:scroll;
+		}
+
+		div, h5 {
+			font-family: Raleway;
+		}
+
+
 
 @media(max-width: 768px) {
 			.cat {
@@ -210,13 +226,8 @@
 	<div id="home">
 
 		<!-- <header class="jumbotron bg-primary text-white">
-																																																																										               <h3 style="font-family:Raleway; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
-																																																																										               </h3>
-																																																																										               <p>Welcome Guest <span class="w3-right">Login</span></p>
-																																																																										            </header>-->
-
-
-
+	3 style="font-family:Raleway; color:white;"><i class="fa fa-align-right w3-right"></i> LaunMart   <i class="fa fa-shopping-cart"></i>
+	/h3>-->
 		<nav class="w3-padding bg-secondary sticky-top text-white" style="z-index:4; margin-top:-30px;">
 			<!-- Brand -->
 			<h3 class="" id="head" style="font-family:Raleway;"><span style="color:orange;">Laun</span>Mart <i class="fa fa-shopping-cart"></i></h3>
@@ -231,6 +242,7 @@
 						<a class="text-white dropdown-item" onclick="catElect()">Electronics</a>
 						<a class="text-white dropdown-item" onclick="catKitchen()">Kitchen</a>
 						<a class="text-white dropdown-item" onclick="catFas()">Fashion</a>
+						<a class="text-white dropdown-item" onclick="catFas()">Cosmetic</a>
 						<a class="text-white dropdown-item" onclick="catOther()">Other</a>
 					</div>
 				</li>
@@ -258,17 +270,27 @@
 
 			<script>
 				function searchbtnshow() {
+
 					document.getElementById("searchdiv").style.display = "inline"
+
 					document.querySelector("#oli1").style.display = "none"
+
 					document.querySelector("#oli2").style.display = "none"
+
 					document.querySelector(".oli").style.display = "none"
+
 				}
 
 				function searchbtnhide() {
+
 					document.getElementById("searchdiv").style.display = "none"
+
 					document.querySelector("#oli1").style.display = "inline"
+
 					document.querySelector("#oli2").style.display = "inline"
+
 					document.querySelector(".oli").style.display = "inline"
+
 				}
 			</script>
 
@@ -288,10 +310,10 @@
 
 				<!-- Indicators -->
 				<!--<ul class="carousel-indicators">
-																																																																																																																																																				    <li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
-																																																																																																																																																				    <li data-target="#demo" data-slide-to="1"></li>
-																																																																																																																																																				    <li data-target="#demo" data-slide-to="2"></li>
-																																																																																																																																																				  </ul>-->
+li data-target="#demo" data-slide-to="0" class="active" style="z-index:3;"></li>
+	i data-target="#demo" data-slide-to="1"></li>
+			 data-target="#demo" data-slide-to="2"></li>
+			ul>-->
 
 				<!-- The slideshow -->
 				<div class="carousel-inner">
@@ -329,11 +351,11 @@
 			<br>
 			<br>
 			<!--  <div class="container w3-center" id="proPageImg">
-																																																																																																															                   IMG url
-																																																																																																															               </div>-->
-																																																																																																															               <div class="container">
-	  <h5 style="font-family:Raleway;" class="text-primary">About product</h5>
- </div>
+	 url
+		iv>
+		div class="container">-->
+	  <h5 style="font-family:Raleway;" class="text-warning">About product</h5>
+
 			<div class="container" id="proPagePrice">
 				Price:
 			</div><br>
@@ -346,7 +368,7 @@
 			</div>
 			<hr>
 			<div class="container" style="font-family:Raleway;">
-				<h5 style="font-family:Raleway;" class="text-primary">About Seller</h5>
+				<h5 style="font-family:Raleway;" class="text-warning">About Seller</h5>
 				<p id="proSellerName">
 					Seller:
 				</p>
@@ -374,6 +396,18 @@
 			</div>
 			</div>
 			<hr>
+			<h5 class="w3-center" style="color: orange;">Similar Products</h5>
+
+			<div id="SimilarProPage"></div>
+
+			<hr>
+
+			<h5 class="w3-center" style="color: orange;">Other Products from <span id="sellerName"></span></h5>
+
+			<div id="SimilarSellerProPage"></div>
+
+			<hr>
+
 			<div class="container">
 				<button class="btn btn-primary" onclick="goBack()" id="goBack">Go Back</button>
 				<button class="btn btn-primary" onclick="goBack2()" id="goBack2">Go Back</button><br>
@@ -381,6 +415,8 @@
 			<br>
 		</div>
 		
+
+		<!-- Search Page -->
 
 		<div class="container w3-center" id="searchPage">
 			<h4 id="tops" style="font-family:Raleway;" class="container w3-center">Result for </h4>
@@ -405,24 +441,12 @@
 
 
 			<!--
-																																																																								<div class="container">
-																																																																									<marquee><p>
-																																																																										Welcome to LaunMart <i class="fa fa-shopping-cart"></i>....  Happy Festive Season From LaunMart  <img style="height:80px;" src="https://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif" alt="Merry Christmas">
-																																																																									</p>
-																																																																									</marquee>
-																																																																								</div>-->
-			-->
-
-
-
-
-
-			
-
-
-
-
-
+		class="container">
+		marquee><p>
+		elcome to LaunMart <i class="fa fa-shopping-cart"></i>....  Happy Festive Season From LaunMart  <img style="height:80px;" src="https://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif" alt="Merry Christmas">
+			p>
+			uee>
+			iv>-->
 
 
 			<div style="margin-top:-50px;" id="showcase" style="font-family:Raleway;">
@@ -472,7 +496,7 @@
 			<br>
 			<h3 style="font-family:Raleway;">Categories</h3>
 			<br>
-			<h4 id="topCat" onclick="catElect()" style="font-family:Raleway;">Electronics<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<h4 id="topCat" onclick="catElect()" style="font-family:Raleway;">Electronics and Gadgets<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
 			<br>
 
 			<div class='row cat container' id='electSection'>
@@ -487,10 +511,17 @@
 
 			</div>
 			<br><br>
-			<h4 onclick="catFas()" style="font-family:Raleway;">Fashion<span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<h4 onclick="catFas()" style="font-family:Raleway;">Fashion and Clothing <span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
 			<br>
 
 			<div class='row cat container' id='FashionSection'>
+
+			</div>
+			<br><br>
+			<h4 onclick="catCos()" style="font-family:Raleway;">Cosmetic <span class="w3-right"><i class="fa fa-arrow-right"></i></span></h4>
+			<br>
+
+			<div class='row cat container' id='CosmeticSection'>
 
 			</div>
 			<br><br>
@@ -624,7 +655,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 						elect = ""
 
-						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<div onclick='tap2(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
 						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
 						elect += "<br>"
 						elect += doc.data().proName
@@ -660,7 +691,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 						elect = ""
 
-						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<div onclick='tap2(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
 						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
 						elect += "<br>"
 						elect += doc.data().proName
@@ -696,7 +727,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 						elect = ""
 
-						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<div onclick='tap2(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
 						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
 						elect += "<br>"
 						elect += doc.data().proName
@@ -714,8 +745,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 
 
-
-						function catOther() {
+						function catCos() {
 						document.querySelector("#catPageContent").innerHTML = ""
 						document.getElementById("proPage").style.display = "none"
 						document.getElementById("homePage").style.display = "none"
@@ -726,13 +756,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 						snapshot.docs.forEach(doc => {
 						var catPage = document.querySelector("#catPage");
 						var catPageContent = document.querySelector("#catPageContent")
-						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Other"
-						if (doc.data().proCat == "Other") {
+						document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Cosmetic"
+						if (doc.data().proCat == "Cosmetic") {
 
 
 						elect = ""
 
-						elect += "<div onclick='tap2(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+						elect += "<div onclick='tap2(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
 						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
 						elect += "<br>"
 						elect += doc.data().proName
@@ -751,230 +781,602 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 
-						document.querySelector("#searchbtn").addEventListener("click", () => {
-						document.querySelector("#sp").innerHTML = ""
+
+					function catOther() {
+
+						document.querySelector("#catPageContent").innerHTML = ""
+
+						document.getElementById("proPage").style.display = "none"
+
+						document.getElementById("homePage").style.display = "none"
+
 						document.getElementById("overlay").style.display = "block"
+
 						document.getElementById("load").style.display = "block"
-						searchItem = document.querySelector("#search").value
-						if (searchItem != "") {
+
+						document.getElementById("searchPage").style.display = "none";
+
 						db.collection("products").get().then((snapshot) => {
-						snapshot.docs.forEach(doc => {
-						if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
-						document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
-						var sp = document.querySelector("#sp");
-						// sp.innerHTML = ""
-						elect = ""
 
-						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-						elect += "<br>"
-						elect += doc.data().proName
-						elect += "<br>"
+							snapshot.docs.forEach(doc => {
+
+								var catPage = document.querySelector("#catPage");
+
+								var catPageContent = document.querySelector("#catPageContent")
+
+								document.querySelector("#catPageName").innerHTML = "<span onclick='goBack()' class='w3-left'><i class='fa fa-arrow-left'></i></span>Other"
+
+								if (doc.data().proCat == "Other") {
 
 
-						elect += "</div>"
-						sp.innerHTML += elect
-						document.getElementById("proPage").style.display = "none"
-						document.getElementById("homePage").style.display = "none"
-						document.getElementById("overlay").style.display = "none"
-						document.getElementById("load").style.display = "none"
-						document.getElementById("searchPage").style.display = "block";
+									elect = ""
 
-						document.getElementById("catPage").style.display = "none"
-						} else {
-						document.getElementById("overlay").style.display = "none"
-						document.getElementById("load").style.display = "none"
-						document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+									elect += "<div onclick='tap2(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
 
-						// var sp = document.querySelector("#sp");
-						//sp.innerHTML = "No Item Found"
-						document.getElementById("searchPage").style.display = "block";
-						document.getElementById("proPage").style.display = "none"
-						document.getElementById("homePage").style.display = "none"
-						}
+									elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+									elect += "<br>"
+
+									elect += doc.data().proName
+
+									elect += "<br>"
+
+
+									elect += "</div>"
+
+									catPageContent.innerHTML += elect
+
+									catPage.style.display = "block"
+
+									document.getElementById("overlay").style.display = "none"
+
+									document.getElementById("load").style.display = "none"
+
+								}
+
+							})
+
 						})
-						})
 
-						} else {
-						document.getElementById("overlay").style.display = "none"
-						document.getElementById("load").style.display = "none"
+					}
+
+
+
+					// Search btn functionality
+
+
+
+					document.querySelector("#searchbtn").addEventListener("click", () => {
+
+						document.querySelector("#sp").innerHTML = ""
+
+						document.getElementById("overlay").style.display = "block"
+
+						document.getElementById("load").style.display = "block"
+
+						searchItem = document.querySelector("#search").value
+
+
+						if (searchItem != "") {
+
+							db.collection("products").get().then((snapshot) => {
+
+								snapshot.docs.forEach(doc => {
+
+									if (doc.data().proName.toLowerCase() == searchItem.toLowerCase() || doc.data().proName.toLowerCase().includes(searchItem.toLowerCase())) {
+
+										document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+
+										var sp = document.querySelector("#sp");
+
+										// sp.innerHTML = ""
+
+										elect = ""
+
+										elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+										elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+										elect += "<br>"
+
+										elect += doc.data().proName
+
+										elect += "<br>"
+
+
+										elect += "</div>"
+
+										sp.innerHTML += elect
+
+										document.getElementById("proPage").style.display = "none"
+
+										document.getElementById("homePage").style.display = "none"
+
+										document.getElementById("overlay").style.display = "none"
+
+										document.getElementById("load").style.display = "none"
+
+										document.getElementById("searchPage").style.display = "block";
+
+										document.getElementById("catPage").style.display = "none"
+
+									}
+
+									else {
+
+										document.getElementById("overlay").style.display = "none"
+
+										document.getElementById("load").style.display = "none"
+
+										document.querySelector("#tops").innerHTML = "Search Result for " + searchItem
+
+										// var sp = document.querySelector("#sp");
+
+										//sp.innerHTML = "No Item Found"
+
+										document.getElementById("searchPage").style.display = "block";
+
+										document.getElementById("proPage").style.display = "none"
+
+										document.getElementById("homePage").style.display = "none"
+
+									}
+								})
+							})
+
+						} 
+
+						else {
+
+							document.getElementById("overlay").style.display = "none"
+
+							document.getElementById("load").style.display = "none"
+
 						}
+
 						//console.log(searchItem)
-						})
+					})
 
 
-						function renderDoc(doc) {
+
+					// Add products to sections in landing page
+
+
+					function renderDoc(doc) {
+
 						var electS = document.querySelector("#electSection");
+
 						var kitchenS = document.querySelector("#kitchenSection");
+
 						var FashionS = document.querySelector("#FashionSection");
+
+						var CosmeticS = document.querySelector("#CosmeticSection");
+
 						var OtherS = document.querySelector("#otherSection");
+
 						if (doc.data().proCat == "Electronics") {
 
 
-						elect = ""
+							elect = ""
 
-						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-						elect += "<br>"
-						elect += doc.data().proName
-						elect += "<br>"
+							elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+							elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+							elect += "<br>"
+
+							elect += doc.data().proName
+
+							elect += "<br>"
 
 
-						elect += "</div>"
-						electS.innerHTML += elect
+							elect += "</div>"
+
+							electS.innerHTML += elect
+
 						}
 
 						if (doc.data().proCat == "Kitchen") {
 
 
-						elect = ""
+							elect = ""
 
-						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-						elect += "<br>"
-						elect += doc.data().proName
-						elect += "<br>"
+							elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+							elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+							elect += "<br>"
+
+							elect += doc.data().proName
+
+							elect += "<br>"
 
 
-						elect += "</div>"
-						kitchenS.innerHTML += elect
+							elect += "</div>"
+
+							kitchenS.innerHTML += elect
+
 						}
 
 						if (doc.data().proCat == "Fashion") {
 
 
-						elect = ""
+							elect = ""
 
-						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-						elect += "<br>"
-						elect += doc.data().proName
-						elect += "<br>"
+							elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+							elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+							elect += "<br>"
+
+							elect += doc.data().proName
 
 
-						elect += "</div>"
-						FashionS.innerHTML += elect
+							elect += "<br>"
+
+
+							elect += "</div>"
+
+							FashionS.innerHTML += elect
+
 						}
+
+						if (doc.data().proCat == "Cosmetic") {
+
+
+							elect = ""
+
+							elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+							elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+							elect += "<br>"
+
+							elect += doc.data().proName
+
+							elect += "<br>"
+
+
+							elect += "</div>"
+
+							CosmeticS.innerHTML += elect
+
+						}
+
 						if (doc.data().proCat == "Other") {
 
 
-						elect = ""
+							elect = ""
 
-						elect += "<div onclick='tap(this);' class='col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
-						elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
-						elect += "<br>"
-						elect += doc.data().proName
-						elect += "<br>"
+							elect += "<div onclick='tap(this);' class='w3-card col-4 w3-margin-bottom pt-2 w3-border' data-id='" + doc.id + "'>"
+
+							elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + " '";
+
+							elect += "<br>"
+
+							elect += doc.data().proName
+
+							elect += "<br>"
 
 
-						elect += "</div>"
-						OtherS.innerHTML += elect
+							elect += "</div>"
+
+							OtherS.innerHTML += elect
+
 						}
-						}
-						$('.nav-link').on('click', function() {
+
+					}
+
+
+					$('.nav-link').on('click', function() {
+
 						$('.navbar-collapse').collapse('hide');
-						});
+
+					});
 
 
-						function tap(self) {
+					// When a product is tapped from home page
+
+
+					function tap(self) {
+
 						document.getElementById("overlay").style.display = "block"
-						document.getElementById("load").style.display = "block"
-						let id = self.getAttribute('data-id');
-						console.log(id)
-						db.doc("products/" + id).get().then((doc) => {
-						//console.log(doc.data().proCat)
-						document.getElementById("proPageName").innerHTML = doc.data().proName
-						document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
-						document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
-						document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
-						document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
-						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
-						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
-						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
-						
-						mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
-						
-						
-						
-						document.getElementById("proPageEmail").innerHTML = "<a class='col-12 btn btn-secondary' href="+mail+">" + "Contact Seller via Email" + "</a>"
-						
-					num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20in%20one%20of%20your%20products.%20Reply%20me%20let%20us%20negotiate."
-					
-					
-					document.getElementById("proPageNum").innerHTML = "<a class='col-12 btn btn-success' href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
-					
-						document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-						document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
-						document.getElementById("proPage").style.display = "block"
-						document.getElementById("homePage").style.display = "none"
-						document.getElementById("overlay").style.display = "none"
-						document.getElementById("load").style.display = "none"
-						document.getElementById("searchPage").style.display = "none"
-						document.getElementById("catPage").style.display = "none"
 
-						document.getElementById("goBack2").style.display = "none"
-						document.getElementById("goBack").style.display = "block"
+						document.getElementById("load").style.display = "block"
+
+						let id = self.getAttribute('data-id');
+
+						console.log(id)
+
+						db.doc("products/" + id).get().then((doc) => {
+
+							//console.log(doc.data().proCat)
+
+							document.getElementById("proPageName").innerHTML = doc.data().proName
+
+							document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+
+							document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+
+							document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
+
+							document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
+
+							document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
+
+							document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+
+							document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+						
+							mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
+						
+						
+						
+							document.getElementById("proPageEmail").innerHTML = "<a class='col-12 btn btn-secondary' href="+mail+">" + "Contact Seller via Email" + "</a>"
+						
+							num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20in%20your%20" + doc.data().proName + ".%20Reply%20me%20let%20us%20negotiate."
+					
+						
+							document.getElementById("proPageNum").innerHTML = "<a class='col-12 btn btn-success' href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
+					
+							document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
+
+							document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-warning'>Product Description: </h6>" + doc.data().proDes + "<br>"
+
+							document.getElementById("proPage").style.display = "block"
+
+							document.getElementById("homePage").style.display = "none"
+
+							document.getElementById("overlay").style.display = "none"
+
+							document.getElementById("load").style.display = "none"
+
+							document.getElementById("searchPage").style.display = "none"
+
+							document.getElementById("catPage").style.display = "none"
+
+							document.getElementById("goBack2").style.display = "none"
+
+							document.getElementById("goBack").style.display = "block"
+
+
+							var Sec = doc.data().proSec
+
+							document.getElementById("SimilarProPage").innerHTML = ""
+
+							db.collection("products").get().then((snapshot) => {
+
+								snapshot.docs.forEach(doc => {
+
+									if (doc.data().proSec == Sec && doc.id != id) {
+
+										elect = ""
+
+										elect += "<div onclick='tap(this)' style='margin-right:15px; float:none; display:inline-block;' class='w3-card col-4 	w3-margin-bottom w3-center pt-2 w3-border' data-id'" + doc.id + "'>"
+
+										elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + "'"
+
+										elect += "<br><p>"
+
+										elect += doc.data().proName
+
+										elect += "</p><br>"
+
+										elect += "</div>"
+
+										document.getElementById("SimilarProPage").innerHTML += elect
+
+									}
+
+								})
+
+							})
+
+							var Seller = doc.data().proSeller
+
+							document.getElementById("sellerName").innerHTML = Seller
+
+							document.getElementById("SimilarSellerProPage").innerHTML = ""
+
+							db.collection("products").get().then((snapshot) => {
+
+								snapshot.docs.forEach(doc => {
+
+									if (doc.data().proSeller == Seller && doc.id != id) {
+
+										sellerpro = ""
+
+										sellerpro += "<div onclick='tap(this)' style='margin-right:15px; float:none; display:inline-block;' class='w3-card col-4 w3-margin-bottom w3-center pt-2 w3-border' data-id'" + doc.id + "'>"
+
+										sellerpro += "<img class='catImg' src='" + doc.data().proImgUrl1 + "'"
+
+										sellerpro += "<br><p>"
+
+										sellerpro += doc.data().proName
+
+										sellerpro += "</p><br>"
+
+										sellerpro += "</div>"
+
+										document.getElementById("SimilarSellerProPage").innerHTML += sellerpro
+
+
+
+									}
+
+								})
+
+							})
 
 						})
-						}
 
-						function tap2(self) {
+					}
+
+
+
+					// When a product is tapped from category page
+
+
+
+					function tap2(self) {
+
 						document.getElementById("overlay").style.display = "block"
+
 						document.getElementById("load").style.display = "block"
+
 						let id = self.getAttribute('data-id');
+
 						console.log(id)
+
 						db.doc("products/" + id).get().then((doc) => {
-						//console.log(doc.data().proCat)
-						document.getElementById("proPageName").innerHTML = doc.data().proName
-						document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
-						document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
-						document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
-						document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
-						document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
-						document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
-						document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
+
+							//console.log(doc.data().proCat)
+
+							document.getElementById("proPageName").innerHTML = doc.data().proName
+
+							document.getElementById("proPageImg1").innerHTML = "<img src='" + doc.data().proImgUrl1 + "'>"
+
+							document.getElementById("proPageImg2").innerHTML = "<img src='" + doc.data().proImgUrl2 + "'>"
+
+							document.getElementById("proPageImg3").innerHTML = "<img src='" + doc.data().proImgUrl3 + "'>"
+
+							document.getElementById("proPageImg4").innerHTML = "<img src='" + doc.data().proImgUrl4 + "'>"
+
+							document.getElementById("proPageImg5").innerHTML = "<img src='" + doc.data().proImgUrl5 + "'>"
+
+							document.getElementById("proPagePrice").innerHTML = "Selling Price: " + doc.data().proPrice
+
+							document.getElementById("proSellerName").innerHTML = "Seller Name: " + doc.data().proSeller
 						
 						
-						mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
+							mail = "mailto:" + doc.data().proEmail + "?subject=Mail from a Launmart customer&body=Hello, am intersted in one of your products. Please contact me lets negotiate."
 						
 						
 						
 						
-						document.getElementById("proPageEmail").innerHTML = "<a class='col-12 btn btn-secondary' href="+mail+">" + "Contact Seller via Email" + "</a>"
+							document.getElementById("proPageEmail").innerHTML = "<a class='col-12 btn btn-secondary' href="+mail+">" + "Contact Seller via Email" + "</a>"
 						
-					num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20in%20one%20of%20your%20products.%20Reply%20me%20let%20us%20negotiate."
+							num = "https://wa.me/+234" + doc.data().proNum + "?text=Hello,%20this%20is%20a%20customer%20from%20LaumMart%20and%20i%20am%20interested%20of%20your%20" + doc.data().proName + ".%20Reply%20me%20let%20us%20negotiate."
 					
 					
-					document.getElementById("proPageNum").innerHTML = "<a class='col-12 btn btn-success' href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
+							document.getElementById("proPageNum").innerHTML = "<a class='col-12 btn btn-success' href='" + num +"'>" + "Contact Seller via WhatsApp" + " <i class='fab fa-whatsapp text-white'></a>"
+
 							document.getElementById("proPageSellerLoc").innerHTML = "Seller Location: " + doc.data().proSellerLoc
-							document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-primary'>Product Description: </h6>" + doc.data().proDes + "<br>"
+
+							document.getElementById("proPageDes").innerHTML = "<h6 style='font-family:Raleway;' class='text-warning'>Product Description: </h6>" + doc.data().proDes + "<br>"
+
 							document.getElementById("proPage").style.display = "block"
+
 							document.getElementById("homePage").style.display = "none"
+
 							document.getElementById("overlay").style.display = "none"
+
 							document.getElementById("load").style.display = "none"
+
 							document.getElementById("searchPage").style.display = "none"
+
 							document.getElementById("catPage").style.display = "none"
+
 							document.getElementById("goBack").style.display = "none"
+
 							document.getElementById("goBack2").style.display = "block"
 
 
+							var Sec = doc.data().proSec
+
+							document.getElementById("SimilarProPage").innerHTML = ""
+
+							db.collection("products").get().then((snapshot) => {
+
+								snapshot.docs.forEach(doc => {
+
+									if (doc.data().proSec == Sec && doc.id != id) {
+
+										elect = ""
+
+										elect += "<div onclick='tap2(this)' style='margin-right:15px; float:none; display:inline-block;' class='w3-card col-4 w3-margin-bottom w3-center pt-2 w3-border' data-id'" + doc.id + "'>"
+
+										elect += "<img class='catImg' src='" + doc.data().proImgUrl1 + "'"
+
+										elect += "<br><p>"
+
+										elect += doc.data().proName
+
+										elect += "</p><br>"
+
+										elect += "</div>"
+
+										document.getElementById("SimilarProPage").innerHTML += elect
+
+									}
+
+								})
+
 							})
-							}
+
+							var Seller = doc.data().proSeller
+
+							document.getElementById("sellerName").innerHTML =Seller
 
 
-							function goBack() {
+							document.getElementById("SimilarSellerProPage").innerHTML = ""
+
+							db.collection("products").get().then((snapshot) => {
+
+								snapshot.docs.forEach(doc => {
+
+									if (doc.data().proSeller == Seller && doc.id != id) {
+
+										sellerpro = ""
+
+										sellerpro += "<div onclick='tap2(this)' style='margin-right:15px; float:none; display:inline-block;' class='w3-card col-4 w3-margin-bottom w3-center pt-2 w3-border' data-id'" + doc.id + "'>"
+
+										sellerpro += "<img class='catImg' src='" + doc.data().proImgUrl1 + "'"
+
+										sellerpro += "<br><p>"
+
+										sellerpro += doc.data().proName
+
+										sellerpro += "</p><br>"
+
+										sellerpro += "</div>"
+
+										document.getElementById("SimilarSellerProPage").innerHTML += sellerpro
+
+									}
+
+								})
+
+							})
+
+
+						})
+					}
+
+
+						function goBack() {
+
 							document.getElementById("homePage").style.display = "block"
-							document.getElementById("proPage").style.display = "none"
-							document.getElementById("searchPage").style.display = "none"
-							document.getElementById("catPage").style.display = "none"
-							}
 
-							function goBack2() {
-							document.getElementById("homePage").style.display = "none"
 							document.getElementById("proPage").style.display = "none"
+
 							document.getElementById("searchPage").style.display = "none"
+
+							document.getElementById("catPage").style.display = "none"
+
+						}
+
+						function goBack2() {
+
+							document.getElementById("homePage").style.display = "none"
+
+							document.getElementById("proPage").style.display = "none"
+
+							document.getElementById("searchPage").style.display = "none"
+
 							document.getElementById("catPage").style.display = "block"
-							}
+
+						}
 
 							// Your web app's Firebase configuration
 							/* try {
