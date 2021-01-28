@@ -9,11 +9,11 @@
        <!-- <link type="text/css" href="style.css" rel="stylesheet">
         -->
         <script type="text/javascript" src="logapp.js"></script>
-        <link rel="stylesheet" href="css/uikit.min.css" />
+       <!--  <link rel="stylesheet" href="css/uikit.min.css" />
         <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script> -->
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
         
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -72,14 +72,23 @@
               justify-content: center;
               padding: 150px;
 }
+
+#login {
+  padding:50px;
+  width: 700px;
+}
 .my-container h1 {
               
             }
             #load {
-                top:800px;
-                left:150px;
+                top:300px;
+                left:120px;
             }
-            @media(max-width: 768px) {
+@media(max-width: 768px) {
+
+  #login {
+    padding:20px;
+  }
 
             #load {
                 top:300px;
@@ -89,9 +98,10 @@
                 padding: 30px;
             }
             .font {
-                font-size: 100%;
+    font-size: 100%;
                 
-            }
+  }
+
 }
         </style>
         
@@ -101,9 +111,11 @@
     
     
     
-    <body style="font-family:Raleway;" class="bg-secondary">
+    <body style="font-family:Raleway;" class="bg-secondary w3-center ">
         
-      <div id="body">
+
+        
+      <div id="body" class="w3-center w3-card">
         <div class="w3-overlay w3-animate-opacity" style="cursor:pointer; z-index:5;" id="overlay"></div>
         
         <div class="container w3-animate-right text-white w3-margin-top w3-center" style="z-index:6; position:fixed; display:none;" id="load">
@@ -115,7 +127,7 @@
         
         
         
-        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); padding:20px;">
+        <div id="login" class="container w3-card w3-round" style="background-color:rgba(100, 100, 100, 0.7); ">
            
             <header>
                <h3 class="font text-white" style="font-family:Raleway; font-weight:bolder;"> <span style="color:orange;">Laun</span>Mart   <i class="fa fa-shopping-cart"></i><hr style="border-color:orange; margin-top:5px;">
@@ -182,7 +194,10 @@
             </form>
             
         </div>
-        </div>
+        
+
+        
+      </div>
          <script>
           var firebaseConfig = {
     apiKey: "AIzaSyAN-BGvcPmU0-A31Tmu8ZQxGWfBFZ8Q_OY",
